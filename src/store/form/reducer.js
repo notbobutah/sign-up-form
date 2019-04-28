@@ -5,8 +5,10 @@ const initialState = {
   view : {
     status: null,
     data: {
-      title: 'ORIGINAL TITLE',
-      field: 'ZIZOU PRESIDENT',
+      title: 'Omadi Network Provider Application',
+      firstname: 'John',
+      lastname: "Towman",
+      state: "UT",
     },
   },
   edit : {

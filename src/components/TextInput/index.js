@@ -1,7 +1,6 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const TextInput = ({handleChange, label, value, id}) => (
                 <TextField
@@ -11,7 +10,7 @@ const TextInput = ({handleChange, label, value, id}) => (
                     label={label}
                     fullWidth
                     autoComplete="fname"
-                    onChange={(event) => handleChange(id, event.target.value)}
+                    onChange={(event) => handleChange(id, event)}
                     value={value}
                 />
 );
@@ -25,7 +24,9 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
-  handleChange: (field, val) => console.info(`New value (${field}): ${val}`),
+  handleChange: (field, event) => { 
+    console.info(`New value (${field}): ${event.target.value}`)
+  },
   label: null,
   id: null,
   value: null,

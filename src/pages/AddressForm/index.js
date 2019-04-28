@@ -4,9 +4,6 @@ import TextInput from '../../components/TextInput';
 import SaveBar from '../../components/SaveBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 
 class AddressForm extends Component {
   componentWillMount() {
@@ -30,7 +27,7 @@ class AddressForm extends Component {
       <div align="center">
             <React.Fragment>
             <Typography variant="h6" gutterBottom>
-            {formView.title}
+            {formView.title} 
             </Typography>
             <Grid container justify="center" spacing={24}   sm={8}>
                 <Grid item xs={12} sm={8}>
@@ -51,7 +48,7 @@ class AddressForm extends Component {
                     label="Last name"
                     fullWidth
                     autoComplete="lname"
-                />
+                    />
                 </Grid>
                 <Grid item xs={12}  sm={8}>
                 <TextInput
@@ -61,7 +58,8 @@ class AddressForm extends Component {
                     label="Address line 1"
                     fullWidth
                     autoComplete="billing address-line1"
-                />
+                    // handleChange={addChange('field', this.value)}
+                    />
                 </Grid>
                 <Grid item xs={12}  sm={8}>
                 <TextInput
@@ -70,7 +68,8 @@ class AddressForm extends Component {
                     label="Address line 2"
                     fullWidth
                     autoComplete="billing address-line2"
-                />
+                    // handleChange={addChange('field', this.value)}
+                    />
                 </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
@@ -80,14 +79,17 @@ class AddressForm extends Component {
                     label="City"
                     fullWidth
                     autoComplete="billing address-level2"
-                />
+                    // handleChange={addChange('field', this.value)}
+                    />
                 </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput 
                     id="state" 
                     name="state" 
                     label="State/Province/Region" 
-                    fullWidth />
+                    fullWidth 
+                    // handleChange={addChange('field', this.value)}
+                    />
                 </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
@@ -110,13 +112,16 @@ class AddressForm extends Component {
                 />
                 </Grid>
             </Grid>
-            </React.Fragment>
-        <SaveBar
-          onDiscardAction={discardChanges}
-          open={hasChanged}
-          onSaveAction={saveChanges}
-        />
-      </div>
+        <Grid  item xs={12} sm={8}>
+            <SaveBar
+            onDiscardAction={discardChanges}
+            open={1}
+            //open={hasChanged}
+            onSaveAction={saveChanges}
+            />
+        </Grid>
+      </React.Fragment>
+    </div>
     )
   }
 }
@@ -125,11 +130,13 @@ AddressForm.propTypes = {
   addChange: PropTypes.func.isRequired,
   discardChanges : PropTypes.func.isRequired,
   formView: PropTypes.shape({
-    title: PropTypes.string,
+    label: PropTypes.string,
+    id: PropTypes.string,
     field: PropTypes.string,
   }),
   formEdit: PropTypes.shape({
-    title: PropTypes.string,
+    label: PropTypes.string,
+    id : PropTypes.string,
     field: PropTypes.string,
   }),
   hasChanged: PropTypes.bool,
