@@ -1,32 +1,33 @@
-/**
- * MatchPint Ltd
- * @author Pierre Segonne
- * Date: 17/04/2018
- */
-
 import React  from 'react';
 import PropTypes from 'prop-types';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-const TextInput = ({handleChange, title, value}) => (
-  <div>
-    <br/>
-    {title}
-    <br/>
-    <input type="text" value={value} onChange={(event) => handleChange(event.target.value)} />
-    <br/>
-  </div>
+const TextInput = ({handleChange, label, value, id}) => (
+                <TextField
+                    required
+                    id={id}
+                    name={id}
+                    label={label}
+                    fullWidth
+                    autoComplete="fname"
+                    onChange={(event) => handleChange(id, event.target.value)}
+                    value={value}
+                />
 );
 
 
 TextInput.propTypes = {
   handleChange: PropTypes.func,
-  title: PropTypes.string,
+  label: PropTypes.string,
+  id:  PropTypes.string,
   value: PropTypes.string,
 };
 
 TextInput.defaultProps = {
-  handleChange: (event) => console.info(`New value : ${event.target.value}`),
-  title: null,
+  handleChange: (field, val) => console.info(`New value (${field}): ${val}`),
+  label: null,
+  id: null,
   value: null,
 };
 

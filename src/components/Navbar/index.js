@@ -11,7 +11,7 @@ const NavBar = () => {
         <AppBar position="static">
             <Toolbar>
             <Bookmarks></Bookmarks>
-                React Material UI Example
+                Sign Up Form
             </Toolbar>
         </AppBar>
         </div>

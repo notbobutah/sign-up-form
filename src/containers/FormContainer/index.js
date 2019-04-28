@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FormPage from '../../pages/FormPage';
+import FormPage from '../../pages/AddressForm';
 import { getFormView, getFormEdit, getHasChanged } from "../../store/form/selectors";
 import { setupForm, saveForm } from '../../store/form/thunk';
 import { addChange } from '../../store/form/actions';

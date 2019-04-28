@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../Navbar';
+import Navbar from '../components/Navbar';
 import { Provider } from 'react-redux';
 import configureStore from '../store';
 import FormPage from '../containers/FormContainer';
