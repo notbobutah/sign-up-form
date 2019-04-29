@@ -50,6 +50,16 @@ class AddressForm extends Component {
                     autoComplete="lname"
                     />
                 </Grid>
+                <Grid item xs={12} sm={8}>
+                <TextInput
+                    required
+                    id="companyname"
+                    name="companyname"
+                    label="Company Name"
+                    fullWidth
+                    autoComplete="companyname"
+                />
+                </Grid>
                 <Grid item xs={12}  sm={8}>
                 <TextInput
                     required
@@ -104,11 +114,21 @@ class AddressForm extends Component {
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
-                    id="country"
-                    name="country"
-                    label="Country"
+                    id="email"
+                    name="email"
+                    label="Email Address"
                     fullWidth
-                    autoComplete="billing country"
+                    autoComplete="email"
+                />
+                </Grid>
+                <Grid item xs={12} sm={8}>
+                <TextInput
+                    required
+                    id="yearsinbusiness"
+                    name="yearsinbusiness"
+                    label="Years in Business"
+                    fullWidth
+                    autoComplete="yearsinbusiness"
                 />
                 </Grid>
             </Grid>
