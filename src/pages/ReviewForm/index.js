@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TextInput from '../../components/TextInput';
 import SaveBar from '../../components/SaveBar';
 
-class FormPage extends Component {
+class ReviewForm extends Component {
   componentWillMount() {
     this.props.setUpEditableForm();
   }
@@ -19,7 +19,7 @@ class FormPage extends Component {
     } = this.props;
     
     if (!formEdit || !formView) {
-      return <span>LOADING</span>;
+      return <span>LOADING ReviewForm</span>;
     }
     return (
       <div>
@@ -46,7 +46,7 @@ class FormPage extends Component {
   }
 }
 
-FormPage.propTypes = {
+ReviewForm.propTypes = {
   addChange: PropTypes.func.isRequired,
   discardChanges : PropTypes.func.isRequired,
   formView: PropTypes.shape({
@@ -62,10 +62,10 @@ FormPage.propTypes = {
   setUpEditableForm: PropTypes.func.isRequired,
 };
 
-FormPage.defaultProps = {
+ReviewForm.defaultProps = {
   formView: null,
   formEdit: null,
   hasChanged: true,
 };
 
-export default FormPage;
+export default ReviewForm;

@@ -5,10 +5,10 @@ import SaveBar from '../../components/SaveBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-class AddressForm extends Component {
-//   componentWillMount() {
-//     this.props.setUpEditableForm();
-//   }
+class InsuranceForm extends Component {
+  componentWillMount() {
+    this.props.setUpEditableForm();
+  }
   
   render() {
     const {
@@ -146,7 +146,7 @@ class AddressForm extends Component {
   }
 }
 
-AddressForm.propTypes = {
+InsuranceForm.propTypes = {
   addChange: PropTypes.func.isRequired,
   discardChanges : PropTypes.func.isRequired,
   formView: PropTypes.shape({
@@ -164,10 +164,10 @@ AddressForm.propTypes = {
   setUpEditableForm: PropTypes.func.isRequired,
 };
 
-AddressForm.defaultProps = {
+InsuranceForm.defaultProps = {
   formView: null,
   formEdit: null,
   hasChanged: true,
 };
 
-export default AddressForm;
+export default InsuranceForm;

@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import FormPage from '../../pages/AddressForm';
+//import AddressFormPage from '../../pages/AddressForm';
+// import FormPage from '../../pages/AddressForm';
+import Stepper from '../../containers/Stepper';
 import { getFormView, getFormEdit, getHasChanged } from "../../store/form/selectors";
 import { setupForm, saveForm } from '../../store/form/thunk';
 import { addChange } from '../../store/form/actions';
@@ -17,4 +19,4 @@ const mapDispatchToProps = dispatch => ({
   setUpEditableForm: () => dispatch(setupForm()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormPage);
+export default connect(mapStateToProps, mapDispatchToProps)(Stepper);
