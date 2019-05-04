@@ -5,11 +5,14 @@ import SaveBar from '../../components/SaveBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {connect} from 'react-redux'
-import {setNewEditableForm} from '../../store/form/actions'
+import { getFormView, getFormEdit, getHasChanged } from "../../store/form/selectors";
+import { setupForm, saveForm } from '../../store/form/thunk';
+import { addChange } from '../../store/form/actions';
+
 
 class InsuranceForm extends Component {
   componentWillMount() {
-    this.props.setNewEditableForm();
+    this.props.setUpEditableForm();
   }
   
   render() {
@@ -29,110 +32,51 @@ class InsuranceForm extends Component {
       <div align="center">
             <React.Fragment>
             <Typography variant="h6" gutterBottom>
-            {formView.title} 
+            Insurance Form
             </Typography>
-            <Grid container justify="center" spacing={24}   sm={8}>
-                <Grid item xs={12} sm={8}>
+            <Grid container justify="center" spacing={24}   sm={12}>
+                <Grid item xs={12} sm={12}>
                     <TextInput
                     required
-                    id="firstName"
-                    name="firstName"
-                    label="First name"
+                    id="liability"
+                    name="liability"
+                    label="Do you have Commercial General Liability or Garage Liability and $100K Automobile Liability?"
                     fullWidth
-                    autoComplete="fname"
+                    autoComplete="liability"
                     />
                 </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
-                    id="lastName"
-                    name="lastName"
-                    label="Last name"
+                    id="agentname"
+                    name="agentname"
+                    label="What is your Insurance Agent's Name?"
                     fullWidth
-                    autoComplete="lname"
+                    autoComplete="agentname"
                     />
                 </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
-                    id="companyname"
-                    name="companyname"
-                    label="Company Name"
+                    id="agentemail"
+                    name="agentemail"
+                    label="What is your Insurance Agent's Email?"
                     fullWidth
-                    autoComplete="companyname"
+                    autoComplete="agentemail"
                 />
                 </Grid>
                 <Grid item xs={12}  sm={8}>
                 <TextInput
                     required
-                    id="address1"
-                    name="address1"
-                    label="Address line 1"
+                    id="software"
+                    name="software"
+                    label="Do you currently use a towing management software?"
                     fullWidth
-                    autoComplete="billing address-line1"
-                    // handleChange={addChange('field', this.value)}
+                    autoComplete="software"
+                    handleChange={()=>addChange('field', this.value)}
                     />
                 </Grid>
-                <Grid item xs={12}  sm={8}>
-                <TextInput
-                    id="address2"
-                    name="address2"
-                    label="Address line 2"
-                    fullWidth
-                    autoComplete="billing address-line2"
-                    // handleChange={addChange('field', this.value)}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                <TextInput
-                    required
-                    id="city"
-                    name="city"
-                    label="City"
-                    fullWidth
-                    autoComplete="billing address-level2"
-                    // handleChange={addChange('field', this.value)}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                <TextInput 
-                    id="state" 
-                    name="state" 
-                    label="State/Province/Region" 
-                    fullWidth 
-                    // handleChange={addChange('field', this.value)}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                <TextInput
-                    required
-                    id="zip"
-                    name="zip"
-                    label="Zip / Postal code"
-                    fullWidth
-                    autoComplete="billing postal-code"
-                />
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                <TextInput
-                    required
-                    id="email"
-                    name="email"
-                    label="Email Address"
-                    fullWidth
-                    autoComplete="email"
-                />
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                <TextInput
-                    required
-                    id="yearsinbusiness"
-                    name="yearsinbusiness"
-                    label="Years in Business"
-                    fullWidth
-                    autoComplete="yearsinbusiness"
-                />
-                </Grid>
+                
             </Grid>
         <Grid  item xs={12} sm={8}>
             <SaveBar
@@ -172,14 +116,17 @@ InsuranceForm.defaultProps = {
   hasChanged: true,
 };
 
-const mapStateToProps = state => {
-  return {
-    
-  }
-}
+const mapStateToProps = state => ({
+  formView: getFormView(state),
+  formEdit: getFormEdit(state),
+  hasChanged: getHasChanged(state),
+});
 
-const mapDispatchToProps={
-  setNewEditableForm
-}
+const mapDispatchToProps = dispatch => ({
+  addChange: (fieldName, fieldValue) => dispatch(addChange(fieldName, fieldValue)),
+  discardChanges: () => dispatch(setupForm()),
+  saveChanges: () => dispatch(saveForm()),
+  setUpEditableForm: () => dispatch(setupForm()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(InsuranceForm);

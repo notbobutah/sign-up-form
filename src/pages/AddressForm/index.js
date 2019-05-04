@@ -4,6 +4,11 @@ import TextInput from '../../components/TextInput';
 import SaveBar from '../../components/SaveBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import {connect} from 'react-redux'
+import { getFormView, getFormEdit, getHasChanged } from "../../store/form/selectors";
+import { setupForm, saveForm } from '../../store/form/thunk';
+import { addChange } from '../../store/form/actions';
+
 
 class AddressForm extends Component {
 //   componentWillMount() {
@@ -20,9 +25,9 @@ class AddressForm extends Component {
       saveChanges,
     } = this.props;
     
-    if (!formEdit || !formView) {
-      return <span>LOADING</span>;
-    }
+    // if (!formEdit || !formView) {
+    //   return <span>LOADING</span>;
+    // }
     return (
       <div align="center">
             <React.Fragment>
@@ -38,6 +43,7 @@ class AddressForm extends Component {
                     label="First name"
                     fullWidth
                     autoComplete="fname"
+                    handleChange={()=>addChange('field', this.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={8}>
@@ -48,6 +54,7 @@ class AddressForm extends Component {
                     label="Last name"
                     fullWidth
                     autoComplete="lname"
+                    handleChange={()=>addChange('field', this.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={8}>
@@ -58,6 +65,7 @@ class AddressForm extends Component {
                     label="Company Name"
                     fullWidth
                     autoComplete="companyname"
+                    handleChange={()=>addChange('field', this.value)}
                 />
                 </Grid>
                 <Grid item xs={12}  sm={8}>
@@ -68,7 +76,7 @@ class AddressForm extends Component {
                     label="Address line 1"
                     fullWidth
                     autoComplete="billing address-line1"
-                    // handleChange={addChange('field', this.value)}
+                    handleChange={()=>addChange('field', this.value)}
                     />
                 </Grid>
                 <Grid item xs={12}  sm={8}>
@@ -78,7 +86,7 @@ class AddressForm extends Component {
                     label="Address line 2"
                     fullWidth
                     autoComplete="billing address-line2"
-                    // handleChange={addChange('field', this.value)}
+                    handleChange={()=>addChange('field', this.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={8}>
@@ -89,7 +97,7 @@ class AddressForm extends Component {
                     label="City"
                     fullWidth
                     autoComplete="billing address-level2"
-                    // handleChange={addChange('field', this.value)}
+                    handleChange={()=>addChange('field', this.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={8}>
@@ -98,7 +106,7 @@ class AddressForm extends Component {
                     name="state" 
                     label="State/Province/Region" 
                     fullWidth 
-                    // handleChange={addChange('field', this.value)}
+                    handleChange={()=>addChange('field', this.value)}
                     />
                 </Grid>
                 <Grid item xs={12} sm={8}>
@@ -109,6 +117,7 @@ class AddressForm extends Component {
                     label="Zip / Postal code"
                     fullWidth
                     autoComplete="billing postal-code"
+                    handleChange={()=>addChange('field', this.value)}
                 />
                 </Grid>
                 <Grid item xs={12} sm={8}>
@@ -119,6 +128,7 @@ class AddressForm extends Component {
                     label="Email Address"
                     fullWidth
                     autoComplete="email"
+                    handleChange={()=>addChange('field', this.value)}
                 />
                 </Grid>
                 <Grid item xs={12} sm={8}>
@@ -129,6 +139,7 @@ class AddressForm extends Component {
                     label="Years in Business"
                     fullWidth
                     autoComplete="yearsinbusiness"
+                    handleChange={()=>addChange('field', this.value)}
                 />
                 </Grid>
             </Grid>
@@ -136,7 +147,7 @@ class AddressForm extends Component {
             <SaveBar
             onDiscardAction={discardChanges}
             open={1}
-            //open={hasChanged}
+            open={hasChanged}
             onSaveAction={saveChanges}
             />
         </Grid>
@@ -170,4 +181,17 @@ AddressForm.defaultProps = {
   hasChanged: true,
 };
 
-export default AddressForm;
+const mapStateToProps = state => ({
+  formView: getFormView(state),
+  formEdit: getFormEdit(state),
+  hasChanged: getHasChanged(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  addChange: (fieldName, fieldValue) => dispatch(addChange(fieldName, fieldValue)),
+  discardChanges: () => dispatch(setupForm()),
+  saveChanges: () => dispatch(saveForm()),
+  setUpEditableForm: () => dispatch(setupForm()),
+});
+
+export default connect (mapStateToProps,mapDispatchToProps) (AddressForm)

@@ -133,7 +133,7 @@ class HorizontalNonLinearStepper extends React.Component {
             </div>
           ) : (
             <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+              <div >{getStepContent(activeStep)}</div>
               <div>
                 <Button
                   disabled={activeStep === 0}

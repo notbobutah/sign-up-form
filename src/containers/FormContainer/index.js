@@ -1,7 +1,7 @@
-import { connect } from 'react-redux';
+import Stepper from '../../containers/Stepper';
 //import AddressFormPage from '../../pages/AddressForm';
 // import FormPage from '../../pages/AddressForm';
-import Stepper from '../../containers/Stepper';
+import { connect } from 'react-redux';
 import { getFormView, getFormEdit, getHasChanged } from "../../store/form/selectors";
 import { setupForm, saveForm } from '../../store/form/thunk';
 import { addChange } from '../../store/form/actions';
