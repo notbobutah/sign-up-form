@@ -6,7 +6,7 @@ import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import InsuranceForm from '../../pages/InsuranceForm';
+import InsuranceForm from '../../pages/InsuranceForm/index';
 import AddressForm from '../../pages/AddressForm';
 import ReviewForm from '../../pages/ReviewForm';
 

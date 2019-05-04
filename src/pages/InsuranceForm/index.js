@@ -4,10 +4,12 @@ import TextInput from '../../components/TextInput';
 import SaveBar from '../../components/SaveBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import {connect} from 'react-redux'
+import {setNewEditableForm} from '../../store/form/actions'
 
 class InsuranceForm extends Component {
   componentWillMount() {
-    this.props.setUpEditableForm();
+    this.props.setNewEditableForm();
   }
   
   render() {
@@ -170,4 +172,14 @@ InsuranceForm.defaultProps = {
   hasChanged: true,
 };
 
-export default InsuranceForm;
+const mapStateToProps = state => {
+  return {
+    
+  }
+}
+
+const mapDispatchToProps={
+  setNewEditableForm
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InsuranceForm);
