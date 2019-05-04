@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../../components/TextInput';
 import SaveBar from '../../components/SaveBar';
+import {connect} from 'react-redux'
+import {addChange, setNewEditableForm} from '../../store/form/actions'
+import {getFormEdit, getFormView, getHasChanged} from "../../store/form/selectors";
+import {saveForm, setupForm} from "../../store/form/thunk";
 
 class ReviewForm extends Component {
   componentWillMount() {
-    this.props.setUpEditableForm();
+    this.props.setNewEditableForm();
   }
-  
+
   render() {
     const {
       addChange,
@@ -17,14 +21,13 @@ class ReviewForm extends Component {
       hasChanged,
       saveChanges,
     } = this.props;
-    
+
     if (!formEdit || !formView) {
       return <span>LOADING ReviewForm</span>;
     }
     return (
       <div>
-        <h1>{formView.title}</h1>
-        {/* Title */}
+          <h1>Review your application data</h1>
         <TextInput
           handleChange={(newValue) => addChange('title', newValue)}
           title="Title"
@@ -67,5 +70,17 @@ ReviewForm.defaultProps = {
   formEdit: null,
   hasChanged: true,
 };
+const mapStateToProps = state => ({
+    formView: getFormView(state),
+    formEdit: getFormEdit(state),
+    hasChanged: getHasChanged(state),
+});
 
-export default ReviewForm;
+const mapDispatchToProps = dispatch => ({
+    addChange: (fieldName, fieldValue) => dispatch(addChange(fieldName, fieldValue)),
+    discardChanges: () => dispatch(setupForm()),
+    saveChanges: () => dispatch(saveForm()),
+    setNewEditableForm: () => dispatch(setupForm()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewForm);
