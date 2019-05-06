@@ -27,7 +27,7 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ['Membership Data', 'Insurance info', 'Review'];
 }
 
 function getStepContent(step) {
@@ -37,7 +37,7 @@ function getStepContent(step) {
     case 1:
       return <InsuranceForm />;
     case 2:
-      return 'Step 3: This is the bit I really care about!';
+      return <ReviewForm />;
     default:
       return 'Unknown step';
   }
@@ -164,7 +164,7 @@ class HorizontalNonLinearStepper extends React.Component {
             </div>
           )}
         </div>
-      </div>
+        </div>
     );
   }
 }
