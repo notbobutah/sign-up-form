@@ -2,7 +2,7 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
-const TextInput = ({handleChange, label, value, id}) => (
+const TextInput = ({handleChange, label, value, id, addChange, disableInput}) => (
                 <TextField
                     required
                     id={id}
@@ -10,8 +10,9 @@ const TextInput = ({handleChange, label, value, id}) => (
                     label={label}
                     fullWidth
                     autoComplete="fname"
-                    onChange={(event) => handleChange(id, event)}
+                    onChange={(event) => handleChange(id, event, addChange)}
                     value={value}
+                    disabled={disableInput}
                 />
 );
 
@@ -24,8 +25,9 @@ TextInput.propTypes = {
 };
 
 TextInput.defaultProps = {
-  handleChange: (field, event) => { 
+  handleChange: (field, event, addChange) => { 
     console.info(`New value (${field}): ${event.target.value}`)
+    addChange(field, event.target.value)
   },
   label: null,
   id: null,

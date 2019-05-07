@@ -27,17 +27,17 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ['Address Form', 'Insurance Form', 'Review'];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <AddressForm disableInput={false}/>;
     case 1:
-      return <InsuranceForm />;
+      return <InsuranceForm disableInput={false}/>;
     case 2:
-      return 'Step 3: This is the bit I really care about!';
+      return <ReviewForm/>;
     default:
       return 'Unknown step';
   }
@@ -134,7 +134,7 @@ class HorizontalNonLinearStepper extends React.Component {
           ) : (
             <div>
               <div >{getStepContent(activeStep)}</div>
-              <div>
+              {/* <div>
                 <Button
                   disabled={activeStep === 0}
                   onClick={this.handleBack}
@@ -160,7 +160,7 @@ class HorizontalNonLinearStepper extends React.Component {
                       {this.completedSteps() === this.totalSteps() - 1 ? 'Finish' : 'Complete Step'}
                     </Button>
                   ))}
-              </div>
+              </div> */}
             </div>
           )}
         </div>

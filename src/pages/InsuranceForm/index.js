@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../../components/TextInput';
-import SaveBar from '../../components/SaveBar';
+// import SaveBar from '../../components/SaveBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {connect} from 'react-redux'
@@ -12,17 +12,22 @@ import { addChange } from '../../store/form/actions';
 
 class InsuranceForm extends Component {
   componentWillMount() {
-    this.props.setUpEditableForm();
+    const { formEdit, formView } = this.props
+    if (!formEdit || !formView) {
+      this.props.setUpEditableForm(); 
+    }
   }
   
   render() {
     const {
       addChange,
-      discardChanges,
+      // discardChanges,
       formView,
       formEdit,
-      hasChanged,
-      saveChanges,
+      // hasChanged,
+      // saveChanges,
+      data,
+      disableInput
     } = this.props;
     
     if (!formEdit || !formView) {
@@ -34,7 +39,7 @@ class InsuranceForm extends Component {
             <Typography variant="h6" gutterBottom>
             Insurance Form
             </Typography>
-            <Grid container justify="center" spacing={24}   sm={12}>
+            <Grid container justify="center" spacing={24}>
                 <Grid item xs={12} sm={12}>
                     <TextInput
                     required
@@ -43,26 +48,35 @@ class InsuranceForm extends Component {
                     label="Do you have Commercial General Liability or Garage Liability and $100K Automobile Liability?"
                     fullWidth
                     autoComplete="liability"
+                    addChange={addChange}
+                    value={data.liability}
+                    disableInput={disableInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
-                    id="agentname"
-                    name="agentname"
+                    id="agentName"
+                    name="agentName"
                     label="What is your Insurance Agent's Name?"
                     fullWidth
                     autoComplete="agentname"
+                    addChange={addChange}
+                    value={data.agentName}
+                    disableInput={disableInput}
                     />
                 </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
-                    id="agentemail"
-                    name="agentemail"
+                    id="agentEmail"
+                    name="agentEmail"
                     label="What is your Insurance Agent's Email?"
                     fullWidth
                     autoComplete="agentemail"
+                    addChange={addChange}
+                    value={data.agentEmail}
+                    disableInput={disableInput}
                 />
                 </Grid>
                 <Grid item xs={12}  sm={8}>
@@ -73,18 +87,21 @@ class InsuranceForm extends Component {
                     label="Do you currently use a towing management software?"
                     fullWidth
                     autoComplete="software"
-                    handleChange={()=>addChange('field', this.value)}
+                    addChange={addChange}
+                    value={data.software}
+                    disableInput={disableInput}
                     />
+                    
                 </Grid>
                 
             </Grid>
         <Grid  item xs={12} sm={8}>
-            <SaveBar
+            {/* <SaveBar
             onDiscardAction={discardChanges}
             open={1}
             //open={hasChanged}
             onSaveAction={saveChanges}
-            />
+            /> */}
         </Grid>
       </React.Fragment>
     </div>
@@ -120,6 +137,7 @@ const mapStateToProps = state => ({
   formView: getFormView(state),
   formEdit: getFormEdit(state),
   hasChanged: getHasChanged(state),
+  data: state.form.edit.data
 });
 
 const mapDispatchToProps = dispatch => ({
