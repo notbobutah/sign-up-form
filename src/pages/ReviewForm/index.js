@@ -52,6 +52,7 @@ class ReviewForm extends Component {
             onClick={this.handleSubmit}>
             Submit
           </Button>
+          
         {/* <TextInput
           handleChange={(newValue) => addChange('title', newValue)}
           title="Title"
