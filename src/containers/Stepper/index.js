@@ -164,7 +164,7 @@ class HorizontalNonLinearStepper extends React.Component {
             </div>
           )}
         </div>
-      </div>
+        </div>
     );
   }
 }
