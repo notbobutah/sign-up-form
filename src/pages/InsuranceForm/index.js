@@ -32,16 +32,20 @@ class InsuranceForm extends Component {
     return (
       <div align="center">
             <React.Fragment>
-            <Typography variant="h5" gutterBottom>
-            Insurance Form
+            <Typography variant="h3" gutterBottom>
+            Insurance
             </Typography>
             <Grid container justify="center" spacing={24}>
+                <Grid item xs={12} sm={12}>
+                  <Typography variant="h6" gutterBottom>
+                    Do you have Commercial General Liability or Garage Liability and $100K Automobile Liability?
+                  </Typography>
+                </Grid>
                 <Grid item xs={12} sm={8}>
                     <TextInput
                     required
                     id="liability"
                     name="liability"
-                    label="Do you have Commercial General Liability or Garage Liability and $100K Automobile Liability?"
                     fullWidth
                     autoComplete="liability"
                     addChange={addChange}
@@ -49,12 +53,17 @@ class InsuranceForm extends Component {
                     disableInput={disableInput}
                     />
                 </Grid>
+                <Grid item xs={12} sm={12}>
+                  <Typography variant="h6" gutterBottom>
+                    What is your Insurance Agent's Name?
+                  </Typography>
+                </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
                     id="agentName"
                     name="agentName"
-                    label="What is your Insurance Agent's Name?"
+                    label=""
                     fullWidth
                     autoComplete="agentname"
                     addChange={addChange}
