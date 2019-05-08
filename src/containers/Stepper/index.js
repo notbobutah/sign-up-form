@@ -10,6 +10,7 @@ import InsuranceForm from "../../pages/InsuranceForm/index"
 import AddressForm from "../../pages/AddressForm"
 import ReviewForm from "../../pages/ReviewForm"
 import SpecializationsForm from "../../pages/SpecializationsForm"
+import CapabilitiesForm from "../../pages/CapabilitiesForm"
 
 const styles = theme => ({
   root: {
@@ -32,6 +33,7 @@ function getSteps() {
     "Address Form",
     "Insurance Form",
     "Job Specializations Form",
+    "Capability Form",
     "Review"
   ]
 }
@@ -43,8 +45,10 @@ function getStepContent(step) {
     case 1:
       return <InsuranceForm disableInput={false} />
     case 2:
-      return <SpecializationsForm />
+      return <SpecializationsForm disableInput={false} />
     case 3:
+      return <CapabilitiesForm disableInput={false} />
+    case 4:
       return <ReviewForm />
     default:
       return "Unknown step"

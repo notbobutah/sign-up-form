@@ -5,6 +5,7 @@ const initialState = {
   view: {
     status: null,
     data: {
+      //Address Form
       firstName: "",
       lastName: "",
       companyName: "",
@@ -15,10 +16,12 @@ const initialState = {
       zip: "",
       email: "",
       yearsInBusiness: "",
+      //Insurance Form
       liability: "",
       agentName: "",
       agentEmail: "",
       software: "",
+      //Specializations Form
       autoBodyDealer: false,
       salvage: false,
       auctionTransport: false,
@@ -28,7 +31,22 @@ const initialState = {
       batteryInstall: false,
       tireChange: false,
       fuelDelivery: false,
-      lockout: false
+      lockout: false,
+      //Capabilities Form
+      impoundSize: "",
+      impoundCount: "",
+      lightDutyOrWrecker: "",
+      flatBedTow1Car: "",
+      flatBedTow2Car: "",
+      flatBedTow3Car: "",
+      fourCarHauler: "",
+      serviceVehicle: "",
+      heavyDutyWrecker: "",
+      rotator: "",
+      tractor: "",
+      landollTrailer: "",
+      lowboyTrailer: "",
+      otherEquipment: ""
     }
   },
   edit: {
