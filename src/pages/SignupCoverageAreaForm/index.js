@@ -30,7 +30,7 @@ class SignupCoverageAreaForm extends Component {
       return <span>LOADING</span>;
     }
     return (
-      <div align="center">
+      <div >
             <React.Fragment>
             <Typography variant="h5" gutterBottom>
             Coverage Area

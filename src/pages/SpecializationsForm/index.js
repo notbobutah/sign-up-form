@@ -20,7 +20,7 @@ const StyledFormGroup = withStyles({
     display: "flex",
     flexDirection: "column",
     justifyItems: "center",
-    paddingLeft: "4em",
+    paddingLeft: "35%",
     flexWrap: "nowrap"
   }
 })(FormGroup)
