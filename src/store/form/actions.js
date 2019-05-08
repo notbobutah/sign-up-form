@@ -4,11 +4,14 @@
  */
 import * as constants from './constants';
 
-export const addChange = (fieldName, fieldValue) => ({
-  type: constants.ADD_CHANGE,
-  fieldName,
-  fieldValue
-});
+export const addChange = (fieldName, fieldValue) => {
+  // console.log('hit222',fieldName, fieldValue)
+  return{
+    type: constants.ADD_CHANGE,
+    fieldName,
+    fieldValue
+  }
+};
 
 export const setNewEditableForm = form => ({
   type: constants.SET_UP_EDIT_FORM,

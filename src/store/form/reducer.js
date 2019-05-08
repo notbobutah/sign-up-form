@@ -5,8 +5,20 @@ const initialState = {
   view : {
     status: null,
     data: {
-      title: 'ORIGINAL TITLE',
-      field: 'ZIZOU PRESIDENT',
+      firstName: '',
+      lastName: '',
+      companyName:'',
+      address1:'',
+      address2:'',
+      city:'',
+      state: '',
+      zip: '',
+      email: '',
+      yearsInBusiness: '',
+      liability: '',
+      agentName: '',
+      agentEmail: '',
+      software: ''
     },
   },
   edit : {
@@ -30,6 +42,7 @@ function viewReducer(state = initialState.view, action) {
 }
 
 function editReducer(state = initialState.edit, action) {
+  // console.log('hit', state, action)
   switch (action.type) {
     case constants.ADD_CHANGE:
       const newForm = { ...state.data };

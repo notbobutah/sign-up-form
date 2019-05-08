@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Bookmarks from '@material-ui/icons/Bookmarks';
 import TextField from '@material-ui/core/TextField';
-import Navbar from './Navbar';
+import Navbar from './component/Navbar';
 import MediaCard from './Card';
 
 class App extends Component {
