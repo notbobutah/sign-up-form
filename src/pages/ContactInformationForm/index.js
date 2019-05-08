@@ -10,7 +10,7 @@ import { setupForm, saveForm } from '../../store/form/thunk';
 import { addChange } from '../../store/form/actions';
 
 
-class AddressForm extends Component {
+class ContactInformationForm extends Component {
 
   componentWillMount() {
     const { formEdit, formView } = this.props
@@ -19,8 +19,6 @@ class AddressForm extends Component {
     }
   }
   
-
-
   render() {
     const {
       addChange,
@@ -39,11 +37,11 @@ class AddressForm extends Component {
     return (
       <div align="center">
             <React.Fragment>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h6" gutterBottom>
               Contact Information
             </Typography>
             <Grid container justify="center" spacing={24}>
-            <Grid item xs={12} sm={8}>
+                <Grid item xs={12} sm={8}>
                     <TextInput
                     required
                     id="firstName"
@@ -85,19 +83,6 @@ class AddressForm extends Component {
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
-                    id="yearsInBusiness"
-                    name="yearsinbusiness"
-                    label="Years in Business"
-                    fullWidth
-                    autoComplete="yearsinbusiness"
-                    addChange={addChange}
-                    value={data.yearsInBusiness}
-                    disableInput={disableInput}
-                />
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                <TextInput
-                    required
                     id="email"
                     name="email"
                     label="Email Address"
@@ -108,71 +93,19 @@ class AddressForm extends Component {
                     disableInput={disableInput}
                 />
                 </Grid>
-                <Grid item xs={12}  sm={8}>
+                <Grid item xs={12} sm={8}>
                 <TextInput
                     required
-                    id="address1"
-                    name="address1"
-                    label="Address line 1"
+                    id="yearsInBusiness"
+                    name="yearsinbusiness"
+                    label="Years in Business"
                     fullWidth
-                    autoComplete="billing address-line1"
+                    autoComplete="yearsinbusiness"
                     addChange={addChange}
-                    value={data.address1}
-                    disableInput={disableInput}
-                    />
-                </Grid>
-                <Grid item xs={12}  sm={8}>
-                <TextInput
-                    id="address2"
-                    name="address2"
-                    label="Address line 2"
-                    fullWidth
-                    autoComplete="billing address-line2"
-                    addChange={addChange}
-                    value={data.address2}
-                    disableInput={disableInput}
-                    />
-                </Grid>
-            </Grid>
-            <Grid container justify="center" spacing={24}>
-                <Grid item xs={12} sm={4}>
-                <TextInput
-                    required
-                    id="city"
-                    name="city"
-                    label="City"
-                    fullWidth
-                    autoComplete="billing address-level2"
-                    addChange={addChange}
-                    value={data.city}
-                    disableInput={disableInput}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={2}>
-                <TextInput 
-                    id="state" 
-                    name="state" 
-                    label="State" 
-                    fullWidth 
-                    addChange={addChange}
-                    value={data.state}
-                    disableInput={disableInput}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={2}>
-                <TextInput
-                    required
-                    id="zip"
-                    name="zip"
-                    label="Zipcode"
-                    fullWidth
-                    autoComplete="billing postal-code"
-                    addChange={addChange}
-                    value={data.zip}
+                    value={data.yearsInBusiness}
                     disableInput={disableInput}
                 />
                 </Grid>
-
             </Grid>
       </React.Fragment>
     </div>
@@ -180,7 +113,7 @@ class AddressForm extends Component {
   }
 }
 
-AddressForm.propTypes = {
+ContactInformationForm.propTypes = {
   addChange: PropTypes.func.isRequired,
   discardChanges : PropTypes.func.isRequired,
   formView: PropTypes.shape({
@@ -198,7 +131,7 @@ AddressForm.propTypes = {
   setUpEditableForm: PropTypes.func.isRequired,
 };
 
-AddressForm.defaultProps = {
+ContactInformationForm.defaultProps = {
   formView: null,
   formEdit: null,
   hasChanged: true,
@@ -218,4 +151,4 @@ const mapDispatchToProps = dispatch => ({
   setUpEditableForm: () => dispatch(setupForm()),
 });
 
-export default connect (mapStateToProps,mapDispatchToProps) (AddressForm)
+export default connect (mapStateToProps,mapDispatchToProps) (ContactInformationForm)

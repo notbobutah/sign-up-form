@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../../components/TextInput';
-// import SaveBar from '../../components/SaveBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {connect} from 'react-redux'
@@ -21,11 +20,8 @@ class SignupCoverageAreaForm extends Component {
   render() {
     const {
       addChange,
-      // discardChanges,
       formView,
       formEdit,
-      // hasChanged,
-      // saveChanges,
       data,
       disableInput
     } = this.props;
@@ -36,20 +32,20 @@ class SignupCoverageAreaForm extends Component {
     return (
       <div align="center">
             <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-            Signup Coverage Area Form
+            <Typography variant="h5" gutterBottom>
+            Coverage Area
             </Typography>
             <Grid container justify="center" spacing={24}>
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={8}>
                     <TextInput
                     required
-                    id="coveragearea"
-                    name="coveragearea"
+                    id="leaveCoverageArea"
+                    name="leaveCoverageArea"
                     label="Are you willing to leave your coverage area?"
                     fullWidth
-                    autoComplete="coveragearea"
+                    autoComplete="leaveCoverageArea"
                     addChange={addChange}
-                    value={data.liability}
+                    value={data.leaveCoverageArea}
                     disableInput={disableInput}
                     />
                 </Grid>
@@ -58,11 +54,11 @@ class SignupCoverageAreaForm extends Component {
                     required
                     id="travel"
                     name="travel"
-                    label="How many miles are you willing to travek from your home location?"
+                    label="How many miles are you willing to travel from your home location?"
                     fullWidth
                     autoComplete="travel"
                     addChange={addChange}
-                    value={data.agentName}
+                    value={data.travel}
                     disableInput={disableInput}
                     />
                 </Grid>
@@ -75,34 +71,11 @@ class SignupCoverageAreaForm extends Component {
                     fullWidth
                     autoComplete="hours"
                     addChange={addChange}
-                    value={data.agentEmail}
+                    value={data.hours}
                     disableInput={disableInput}
                 />
-                </Grid>
-                <Grid item xs={12}  sm={8}>
-                <TextInput
-                    required
-                    id="yard"
-                    name="yard"
-                    label="Do you have a storage yard?"
-                    fullWidth
-                    autoComplete="yard"
-                    addChange={addChange}
-                    value={data.software}
-                    disableInput={disableInput}
-                    />
-                    
-                </Grid>
-                
+                </Grid>                
             </Grid>
-        <Grid  item xs={12} sm={8}>
-            {/* <SaveBar
-            onDiscardAction={discardChanges}
-            open={1}
-            //open={hasChanged}
-            onSaveAction={saveChanges}
-            /> */}
-        </Grid>
       </React.Fragment>
     </div>
     )

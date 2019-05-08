@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../../components/TextInput';
-import SaveBar from '../../components/SaveBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {connect} from 'react-redux'
@@ -17,11 +16,10 @@ class SignupSoftwareForm extends Component {
     render() {
       const {
         addChange,
-        discardChanges,
         formView,
         formEdit,
-        hasChanged,
-        saveChanges,
+        data,
+        disableInput
       } = this.props;
       
       if (!formEdit || !formView) {
@@ -31,27 +29,33 @@ class SignupSoftwareForm extends Component {
         <div align="center">
               <React.Fragment>
               <Typography variant="h6" gutterBottom>
-              SignupSoftware Form
+              Software
               </Typography>
-              <Grid container justify="center" spacing={24}   sm={12}>
+              <Grid container justify="center">
                   <Grid item xs={12} sm={12}>
                       <TextInput
                       required
-                      id="signupsoftware"
-                      name="signupsoftware"
+                      id="currentSoftware"
+                      name="currentSoftware"
                       label="Which Software do you use?"
                       fullWidth
-                      autoComplete="signupsoftware"
+                      autoComplete="currentSoftware"
+                      addChange={addChange}
+                      value={data.currentSoftware}
+                      disableInput={disableInput}
                       />
                   </Grid>
                   <Grid item xs={12} sm={8}>
                   <TextInput
                       required
-                      id="learnsoftware"
-                      name="learnsoftware"
+                      id="learnSoftware"
+                      name="learnSoftware"
                       label="Would you be interested in learning more about Omadi's towing management software?"
                       fullWidth
-                      autoComplete="learnsoftware"
+                      autoComplete="learnSoftware"
+                      addChange={addChange}
+                      value={data.learnSoftware}
+                      disableInput={disableInput}
                       />
                   </Grid>
                   <Grid item xs={12} sm={8}>
@@ -62,36 +66,19 @@ class SignupSoftwareForm extends Component {
                       label="Do you want to subscribe to our Driven newsletter?"
                       fullWidth
                       autoComplete="subscribe"
+                      addChange={addChange}
+                      value={data.subscribe}
+                      disableInput={disableInput}
                   />
                   </Grid>
-                  <Grid item xs={12}  sm={8}>
-                  <TextInput
-                      required
-                      id="currentsoftware"
-                      name="currentsoftware"
-                      label="Do you currently use a towing management software?"
-                      fullWidth
-                      autoComplete="currentsoftware"
-                      handleChange={()=>addChange('field', this.value)}
-                      />
-                  </Grid>
-                  
               </Grid>
-          <Grid  item xs={12} sm={8}>
-              <SaveBar
-              onDiscardAction={discardChanges}
-              open={1}
-              //open={hasChanged}
-              onSaveAction={saveChanges}
-              />
-          </Grid>
         </React.Fragment>
       </div>
       )
     }
   }
   
-  SoftwareSignupForm.propTypes = {
+  SignupSoftwareForm.propTypes = {
     addChange: PropTypes.func.isRequired,
     discardChanges : PropTypes.func.isRequired,
     formView: PropTypes.shape({
@@ -109,7 +96,7 @@ class SignupSoftwareForm extends Component {
     setUpEditableForm: PropTypes.func.isRequired,
   };
   
-  SoftwareSignupForm.defaultProps = {
+  SignupSoftwareForm.defaultProps = {
     formView: null,
     formEdit: null,
     hasChanged: true,
@@ -119,6 +106,7 @@ class SignupSoftwareForm extends Component {
     formView: getFormView(state),
     formEdit: getFormEdit(state),
     hasChanged: getHasChanged(state),
+    data: state.form.edit.data
   });
   
   const mapDispatchToProps = dispatch => ({
@@ -128,5 +116,5 @@ class SignupSoftwareForm extends Component {
     setUpEditableForm: () => dispatch(setupForm()),
   });
   
-  export default connect(mapStateToProps, mapDispatchToProps)(SoftwareSignupForm);
+  export default connect(mapStateToProps, mapDispatchToProps)(SignupSoftwareForm);
   

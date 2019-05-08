@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../../components/TextInput';
-// import SaveBar from '../../components/SaveBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {connect} from 'react-redux'
@@ -21,11 +20,8 @@ class InsuranceForm extends Component {
   render() {
     const {
       addChange,
-      // discardChanges,
       formView,
       formEdit,
-      // hasChanged,
-      // saveChanges,
       data,
       disableInput
     } = this.props;
@@ -36,11 +32,11 @@ class InsuranceForm extends Component {
     return (
       <div align="center">
             <React.Fragment>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h5" gutterBottom>
             Insurance Form
             </Typography>
             <Grid container justify="center" spacing={24}>
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={8}>
                     <TextInput
                     required
                     id="liability"
@@ -96,12 +92,6 @@ class InsuranceForm extends Component {
                 
             </Grid>
         <Grid  item xs={12} sm={8}>
-            {/* <SaveBar
-            onDiscardAction={discardChanges}
-            open={1}
-            //open={hasChanged}
-            onSaveAction={saveChanges}
-            /> */}
         </Grid>
       </React.Fragment>
     </div>

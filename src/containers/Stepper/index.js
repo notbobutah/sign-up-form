@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepButton from '@material-ui/core/StepButton';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import InsuranceForm from '../../pages/InsuranceForm/index';
+import AddressForm from '../../pages/AddressForm';
+import ReviewForm from '../../pages/ReviewForm';
+import CapabilitiesForm from '../../pages/CapabilitiesForm';
+import SignupCoverageAreaForm from '../../pages/SignupCoverageAreaForm'
+import SignupSoftwareForm from '../../pages/SignupSoftwareForm'
+
+const styles = theme => ({
+  root: {
+    width: '90%',
+=======
 import React from "react"
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/core/styles"
@@ -15,6 +35,7 @@ import CapabilitiesForm from "../../pages/CapabilitiesForm"
 const styles = theme => ({
   root: {
     width: "80%"
+>>>>>>> master
   },
   button: {
     marginRight: theme.spacing.unit
@@ -29,6 +50,9 @@ const styles = theme => ({
 })
 
 function getSteps() {
+<<<<<<< HEAD
+  return ['Contact Information', 'Insurance Information', 'Capabilities', 'Specializations', 'Coverage Area', 'Software', 'Review'];
+=======
   return [
     "Address Form",
     "Insurance Form",
@@ -36,6 +60,7 @@ function getSteps() {
     "Capability Form",
     "Review"
   ]
+>>>>>>> master
 }
 
 function getStepContent(step) {
@@ -47,9 +72,19 @@ function getStepContent(step) {
     case 2:
       return <SpecializationsForm disableInput={false} />
     case 3:
+<<<<<<< HEAD
+      return <div>Spec form</div>
+    case 4:
+      return <SignupCoverageAreaForm disableInput={false}/>
+    case 5:
+      return <SignupSoftwareForm disableInput={false}/>
+    case 6:
+      return <ReviewForm/>;
+=======
       return <CapabilitiesForm disableInput={false} />
     case 4:
       return <ReviewForm />
+>>>>>>> master
     default:
       return "Unknown step"
   }
@@ -148,6 +183,9 @@ class HorizontalNonLinearStepper extends React.Component {
             </div>
           ) : (
             <div>
+<<<<<<< HEAD
+              <div >{getStepContent(activeStep)}</div>
+=======
               <div>{getStepContent(activeStep)}</div>
               {/* <div>
                 <Button
@@ -176,6 +214,7 @@ class HorizontalNonLinearStepper extends React.Component {
                     </Button>
                   ))}
               </div> */}
+>>>>>>> master
             </div>
           )}
         </div>
