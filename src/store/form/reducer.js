@@ -1,49 +1,60 @@
-import { combineReducers } from 'redux';
-import * as constants from './constants';
+import { combineReducers } from "redux"
+import * as constants from "./constants"
 
 const initialState = {
-  view : {
+  view: {
     status: null,
     data: {
       //Address Form
-      firstName: '',
-      lastName: '',
-      companyName:'',
-      address1:'',
-      address2:'',
-      city:'',
-      state: '',
-      zip: '',
-      email: '',
-      yearsInBusiness: '',
+      firstName: "",
+      lastName: "",
+      companyName: "",
+      address1: "",
+      address2: "",
+      city: "",
+      state: "",
+      zip: "",
+      email: "",
+      yearsInBusiness: "",
       //Insurance Form
-      liability: '',
-      agentName: '',
-      agentEmail: '',
-      software: '',
+      liability: "",
+      agentName: "",
+      agentEmail: "",
+      software: "",
+      //Specializations Form
+      autoBodyDealer: false,
+      salvage: false,
+      auctionTransport: false,
+      insurance: false,
+      heavyDuty: false,
+      jumpstartBattery: false,
+      batteryInstall: false,
+      tireChange: false,
+      fuelDelivery: false,
+      lockout: false,
       //Capabilities Form
-      impoundSize: '',
-      impoundCount: '',
-      lightDutyOrWrecker: '',
-      flatBedTow1Car: '',
-      flatBedTow2Car: '',
-      flatBedTow3Car: '',
-      fourCarHauler: '',
-      serviceVehicle: '',
-      heavyDutyWrecker: '',
-      rotator: '',
-      tractor: '',
-      landollTrailer: '',
-      lowboyTrailer: '',
-      otherEquipment: ''
-    },
+      impoundSize: "",
+      impoundCount: "",
+      lightDutyOrWrecker: "",
+      flatBedTow1Car: "",
+      flatBedTow2Car: "",
+      flatBedTow3Car: "",
+      fourCarHauler: "",
+      serviceVehicle: "",
+      heavyDutyWrecker: "",
+      rotator: "",
+      tractor: "",
+      landollTrailer: "",
+      lowboyTrailer: "",
+      otherEquipment: ""
+    }
   },
-  edit : {
+  edit: {
     status: null,
     data: null,
-    changed: null,
+    changed: null
   }
-};
+}
 
 function viewReducer(state = initialState.view, action) {
   switch (action.type) {
@@ -51,10 +62,10 @@ function viewReducer(state = initialState.view, action) {
       return {
         ...state,
         status: constants.EDIT_FORM_SUCCESS,
-        data: action.form,
-      };
+        data: action.form
+      }
     default:
-      return state;
+      return state
   }
 }
 
@@ -62,37 +73,37 @@ function editReducer(state = initialState.edit, action) {
   // console.log('hit', state, action)
   switch (action.type) {
     case constants.ADD_CHANGE:
-      const newForm = { ...state.data };
-      newForm[action.fieldName] = action.fieldValue;
+      const newForm = { ...state.data }
+      newForm[action.fieldName] = action.fieldValue
       return {
         ...state,
         changed: true,
-        data: newForm,
-      };
+        data: newForm
+      }
     case constants.SET_UP_EDIT_FORM:
       return {
         ...state,
         changed: false,
-        data: action.form,
-      };
+        data: action.form
+      }
     case constants.EDIT_FORM_PENDING:
       return {
         ...state,
-        status: constants.EDIT_FORM_PENDING,
-      };
+        status: constants.EDIT_FORM_PENDING
+      }
     case constants.EDIT_FORM_SUCCESS:
       return {
         ...state,
         changed: false,
         data: action.form,
-        status: constants.EDIT_FORM_SUCCESS,
-      };
+        status: constants.EDIT_FORM_SUCCESS
+      }
     default:
-      return state;
+      return state
   }
 }
 
 export default combineReducers({
   view: viewReducer,
-  edit: editReducer,
-});
+  edit: editReducer
+})
