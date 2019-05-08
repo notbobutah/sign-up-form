@@ -5,6 +5,7 @@ const initialState = {
   view : {
     status: null,
     data: {
+      //Address Form
       firstName: '',
       lastName: '',
       companyName:'',
@@ -15,10 +16,26 @@ const initialState = {
       zip: '',
       email: '',
       yearsInBusiness: '',
+      //Insurance Form
       liability: '',
       agentName: '',
       agentEmail: '',
-      software: ''
+      software: '',
+      //Capabilities Form
+      impoundSize: '',
+      impoundCount: '',
+      lightDutyOrWrecker: '',
+      flatBedTow1Car: '',
+      flatBedTow2Car: '',
+      flatBedTow3Car: '',
+      fourCarHauler: '',
+      serviceVehicle: '',
+      heavyDutyWrecker: '',
+      rotator: '',
+      tractor: '',
+      landollTrailer: '',
+      lowboyTrailer: '',
+      otherEquipment: ''
     },
   },
   edit : {

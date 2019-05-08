@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import InsuranceForm from '../../pages/InsuranceForm/index';
 import AddressForm from '../../pages/AddressForm';
 import ReviewForm from '../../pages/ReviewForm';
+import CapabilitiesForm from '../../pages/CapabilitiesForm';
 
 const styles = theme => ({
   root: {
@@ -27,7 +28,7 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Address Form', 'Insurance Form', 'Review'];
+  return ['Address Form', 'Insurance Form', 'Capability Form', 'Review'];
 }
 
 function getStepContent(step) {
@@ -37,6 +38,8 @@ function getStepContent(step) {
     case 1:
       return <InsuranceForm disableInput={false}/>;
     case 2:
+      return <CapabilitiesForm disableInput={false}/>
+    case 3:
       return <ReviewForm/>;
     default:
       return 'Unknown step';
