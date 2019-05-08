@@ -10,10 +10,12 @@ import InsuranceForm from '../../pages/InsuranceForm/index';
 import AddressForm from '../../pages/AddressForm';
 import ReviewForm from '../../pages/ReviewForm';
 import CapabilitiesForm from '../../pages/CapabilitiesForm';
+import SignupCoverageAreaForm from '../../pages/SignupCoverageAreaForm'
+import SignupSoftwareForm from '../../pages/SignupSoftwareForm'
 
 const styles = theme => ({
   root: {
-    width: '80%',
+    width: '90%',
   },
   button: {
     marginRight: theme.spacing.unit,
@@ -28,7 +30,7 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Address Form', 'Insurance Form', 'Capability Form', 'Review'];
+  return ['Contact Information', 'Insurance Information', 'Capabilities', 'Specializations', 'Coverage Area', 'Software', 'Review'];
 }
 
 function getStepContent(step) {
@@ -40,6 +42,12 @@ function getStepContent(step) {
     case 2:
       return <CapabilitiesForm disableInput={false}/>
     case 3:
+      return <div>Spec form</div>
+    case 4:
+      return <SignupCoverageAreaForm disableInput={false}/>
+    case 5:
+      return <SignupSoftwareForm disableInput={false}/>
+    case 6:
       return <ReviewForm/>;
     default:
       return 'Unknown step';
@@ -137,33 +145,6 @@ class HorizontalNonLinearStepper extends React.Component {
           ) : (
             <div>
               <div >{getStepContent(activeStep)}</div>
-              {/* <div>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={this.handleBack}
-                  className={classes.button}
-                >
-                  Back
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={this.handleNext}
-                  className={classes.button}
-                >
-                  Next
-                </Button>
-                {activeStep !== steps.length &&
-                  (this.state.completed[this.state.activeStep] ? (
-                    <Typography variant="caption" className={classes.completed}>
-                      Step {activeStep + 1} already completed
-                    </Typography>
-                  ) : (
-                    <Button variant="contained" color="primary" onClick={this.handleComplete}>
-                      {this.completedSteps() === this.totalSteps() - 1 ? 'Finish' : 'Complete Step'}
-                    </Button>
-                  ))}
-              </div> */}
             </div>
           )}
         </div>

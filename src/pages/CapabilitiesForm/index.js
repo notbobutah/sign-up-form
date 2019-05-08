@@ -36,14 +36,14 @@ class CapabilitiesForm extends Component {
     return (
       <div align="center">
             <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-            Capabilities Form
+            <Typography variant="h5" gutterBottom>
+            Capabilities
             </Typography>
             <Grid container justify="center" spacing={24}>
                 <Grid item xs={12} sm={12}>
-                    <Typography variant="h5">Impound/Storage Lot</Typography>
+                    <Typography variant="h6">Impound/Storage Lot</Typography>
                 </Grid>
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={6}>
                     <TextInput
                     required
                     id="impoundSize"
@@ -56,7 +56,7 @@ class CapabilitiesForm extends Component {
                     disableInput={disableInput}
                     />
                 </Grid>             
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={6}>
                     <TextInput
                     required
                     id="impoundCount"
@@ -70,9 +70,11 @@ class CapabilitiesForm extends Component {
                     />
                 </Grid>
                 <Grid item xs={12} sm={12}>
-                    <Typography variant="h5">Enter a number of Trucks & Equipment</Typography>
+                    <Typography variant='h6'>Enter a number of Trucks & Equipment</Typography>
                 </Grid>
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={false} sm={2}>
+                </Grid>
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="lightDutyOrWrecker"
@@ -85,7 +87,7 @@ class CapabilitiesForm extends Component {
                     disableInput={disableInput}
                     />
                 </Grid>           
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="flatBedTow1Car"
@@ -97,8 +99,12 @@ class CapabilitiesForm extends Component {
                     value={data.flatBedTow1Car}
                     disableInput={disableInput}
                     />
-                </Grid>           
-                <Grid item xs={12} sm={12}>
+                </Grid>   
+                <Grid item xs={false} sm={2}>
+                </Grid>
+                <Grid item xs={false} sm={2}>
+                </Grid>
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="flatBedTow2Car"
@@ -111,7 +117,7 @@ class CapabilitiesForm extends Component {
                     disableInput={disableInput}
                     />
                 </Grid>           
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="flatBedTow3Car"
@@ -123,8 +129,12 @@ class CapabilitiesForm extends Component {
                     value={data.flatBedTow3Car}
                     disableInput={disableInput}
                     />
-                </Grid>           
-                <Grid item xs={12} sm={12}>
+                </Grid>
+                <Grid item xs={false} sm={2}>
+                </Grid>     
+                <Grid item xs={false} sm={2}>
+                </Grid>     
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="fourCarHauler"
@@ -137,7 +147,7 @@ class CapabilitiesForm extends Component {
                     disableInput={disableInput}
                     />
                 </Grid>           
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="serviceVehicle"
@@ -149,13 +159,17 @@ class CapabilitiesForm extends Component {
                     value={data.serviceVehicle}
                     disableInput={disableInput}
                     />
+                </Grid>
+                <Grid item xs={false} sm={2}>
+                </Grid>
+                <Grid item xs={false} sm={2}>
                 </Grid>           
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="heavyDutyWrecker"
                     name="heavyDutyWrecker"
-                    label="Heave Duty Wrecker"
+                    label="Heavy Duty Wrecker"
                     fullWidth
                     autoComplete="heavyDutyWrecker"
                     addChange={addChange}
@@ -163,7 +177,7 @@ class CapabilitiesForm extends Component {
                     disableInput={disableInput}
                     />
                 </Grid>           
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="rotator"
@@ -175,8 +189,12 @@ class CapabilitiesForm extends Component {
                     value={data.rotator}
                     disableInput={disableInput}
                     />
-                </Grid>           
-                <Grid item xs={12} sm={12}>
+                </Grid>    
+                <Grid item xs={false} sm={2}>
+                </Grid>
+                <Grid item xs={false} sm={2}>
+                </Grid>       
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="tractor"
@@ -188,8 +206,9 @@ class CapabilitiesForm extends Component {
                     value={data.tractor}
                     disableInput={disableInput}
                     />
-                </Grid>           
-                <Grid item xs={12} sm={12}>
+                </Grid> 
+                          
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="landollTrailer"
@@ -201,8 +220,10 @@ class CapabilitiesForm extends Component {
                     value={data.landollTrailer}
                     disableInput={disableInput}
                     />
-                </Grid>           
-                <Grid item xs={12} sm={12}>
+                </Grid>    
+                <Grid item xs={false} sm={2}>
+                </Grid>      
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="lowboyTrailer"
@@ -215,7 +236,7 @@ class CapabilitiesForm extends Component {
                     disableInput={disableInput}
                     />
                 </Grid>           
-                <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={4}>
                     <TextInput
                     required
                     id="otherEquipment"
