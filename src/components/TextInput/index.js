@@ -1,8 +1,9 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
+import { spacing } from '@material-ui/system';
 
-const TextInput = ({handleChange, label, value, id, addChange, disableInput}) => (
+const TextInput = ({handleChange, label, value, id, addChange, disableInput, helperText}) => (
                 <TextField
                     required
                     id={id}
@@ -13,6 +14,7 @@ const TextInput = ({handleChange, label, value, id, addChange, disableInput}) =>
                     onChange={(event) => handleChange(id, event, addChange)}
                     value={value}
                     disabled={disableInput}
+                    helperText={helperText}
                 />
 );
 

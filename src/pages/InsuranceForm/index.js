@@ -36,16 +36,13 @@ class InsuranceForm extends Component {
             Insurance
             </Typography>
             <Grid container justify="center" spacing={24}>
-                <Grid item xs={12} sm={12}>
-                  <Typography variant="h6" gutterBottom>
-                    Do you have Commercial General Liability or Garage Liability and $100K Automobile Liability?
-                  </Typography>
-                </Grid>
                 <Grid item xs={12} sm={8}>
                     <TextInput
                     required
                     id="liability"
                     name="liability"
+                    label="Do you have Commercial General Liability"
+                    helperText="Do you have Garage Liability and $100K Automobile Liability?"
                     fullWidth
                     autoComplete="liability"
                     addChange={addChange}
@@ -53,17 +50,12 @@ class InsuranceForm extends Component {
                     disableInput={disableInput}
                     />
                 </Grid>
-                <Grid item xs={12} sm={12}>
-                  <Typography variant="h6" gutterBottom>
-                    What is your Insurance Agent's Name?
-                  </Typography>
-                </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
                     id="agentName"
                     name="agentName"
-                    label=""
+                    label="What is your Insurance Agent's Name?"
                     fullWidth
                     autoComplete="agentname"
                     addChange={addChange}
@@ -89,7 +81,7 @@ class InsuranceForm extends Component {
                     required
                     id="software"
                     name="software"
-                    label="Do you currently use a towing management software?"
+                    label="Do you use a towing management software?"
                     fullWidth
                     autoComplete="software"
                     addChange={addChange}
