@@ -1,23 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import InsuranceForm from '../../pages/InsuranceForm/index';
-import AddressForm from '../../pages/AddressForm';
-import ReviewForm from '../../pages/ReviewForm';
-import CapabilitiesForm from '../../pages/CapabilitiesForm';
-import SignupCoverageAreaForm from '../../pages/SignupCoverageAreaForm'
-import SignupSoftwareForm from '../../pages/SignupSoftwareForm'
+import React from "react"
+import PropTypes from "prop-types"
+import { withStyles } from "@material-ui/core/styles"
+import { connect } from "react-redux"
+import Stepper from "@material-ui/core/Stepper"
+import Step from "@material-ui/core/Step"
+import StepButton from "@material-ui/core/StepButton"
+// import Button from "@material-ui/core/Button"
+// import Typography from "@material-ui/core/Typography"
+import InsuranceForm from "../../pages/InsuranceForm/index"
+import AddressForm from "../../pages/AddressForm"
+import ReviewForm from "../../pages/ReviewForm"
+import CapabilitiesForm from "../../pages/CapabilitiesForm"
+import SignupCoverageAreaForm from "../../pages/SignupCoverageAreaForm"
+import SignupSoftwareForm from "../../pages/SignupSoftwareForm"
 import SpecializationsForm from "../../pages/SpecializationsForm"
-
-
+import validateStep from "../../utils/validateStep"
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: "100%"
   },
   button: {
     marginRight: theme.spacing.unit
@@ -33,32 +33,44 @@ const styles = theme => ({
 
 function getSteps() {
   return [
-    'Contact Information', 
-    'Insurance Information', 
-    'Capabilities', 
-    'Specializations',
-    'Coverage Area', 
-    'Software', 
-    'Review'
-  ];
+    "Contact Information",
+    "Insurance Information",
+    "Capabilities",
+    "Specializations",
+    "Coverage Area",
+    "Software",
+    "Review"
+  ]
 }
 
-function getStepContent(step) {
+function getStepContent(step, data, errorStatus) {
   switch (step) {
     case 0:
-      return <AddressForm disableInput={false} />
+      return <AddressForm disableInput={false} errorStatus={errorStatus} />
     case 1:
-      return <InsuranceForm disableInput={false} />
+      return <InsuranceForm disableInput={false} errorStatus={errorStatus} />
     case 2:
-      return <CapabilitiesForm disableInput={false} />
+      // validateStep(step)
+      return <CapabilitiesForm disableInput={false} errorStatus={errorStatus} />
     case 3:
+      // validateStep(step)
       return <SpecializationsForm disableInput={false} />
     case 4:
-      return <SignupCoverageAreaForm disableInput={false}/>
+      // validateStep(step)
+      return (
+        <SignupCoverageAreaForm
+          disableInput={false}
+          errorStatus={errorStatus}
+        />
+      )
     case 5:
-      return <SignupSoftwareForm disableInput={false}/>
+      // validateStep(step)
+      return (
+        <SignupSoftwareForm disableInput={false} errorStatus={errorStatus} />
+      )
     case 6:
-      return <ReviewForm/>;
+      // validateStep(step)
+      return <ReviewForm />
     default:
       return "Unknown step"
   }
@@ -67,37 +79,45 @@ function getStepContent(step) {
 class HorizontalNonLinearStepper extends React.Component {
   state = {
     activeStep: 0,
+    errorStatus: false,
     completed: {}
   }
 
   totalSteps = () => getSteps().length
 
-  handleNext = () => {
-    let activeStep
+  // handleNext = () => {
+  //   let activeStep
 
-    if (this.isLastStep() && !this.allStepsCompleted()) {
-      // It's the last step, but not all steps have been completed,
-      // find the first step that has been completed
-      const steps = getSteps()
-      activeStep = steps.findIndex((step, i) => !(i in this.state.completed))
-    } else {
-      activeStep = this.state.activeStep + 1
-    }
-    this.setState({
-      activeStep
-    })
-  }
+  //   if (this.isLastStep() && !this.allStepsCompleted()) {
+  //     // It's the last step, but not all steps have been completed,
+  //     // find the first step that has been completed
+  //     const steps = getSteps()
+  //     activeStep = steps.findIndex((step, i) => !(i in this.state.completed))
+  //   } else {
+  //     activeStep = this.state.activeStep + 1
+  //   }
+  //   // this.setState({
+  //   //   activeStep
+  //   // })
+  // }
 
-  handleBack = () => {
-    this.setState(state => ({
-      activeStep: state.activeStep - 1
-    }))
-  }
+  // handleBack = () => {
+  //   this.setState(state => ({
+  //     activeStep: state.activeStep - 1
+  //   }))
+  // }
 
   handleStep = step => () => {
-    this.setState({
-      activeStep: step
-    })
+    // This verifies that all fields are entered before jumping to the next or prev step
+    const errorStatus = validateStep(this.state.activeStep, this.props.data)
+    if (errorStatus) {
+      this.setState({ errorStatus: errorStatus })
+    } else {
+      this.setState({ errorStatus: errorStatus })
+      this.setState({
+        activeStep: step
+      })
+    }
   }
 
   handleComplete = () => {
@@ -135,7 +155,7 @@ class HorizontalNonLinearStepper extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Stepper nonLinear activeStep={activeStep} style={{overflow:'auto'}}>
+        <Stepper nonLinear activeStep={activeStep} style={{ overflow: "auto" }}>
           {steps.map((label, index) => (
             <Step key={label}>
               <StepButton
@@ -147,8 +167,8 @@ class HorizontalNonLinearStepper extends React.Component {
             </Step>
           ))}
         </Stepper>
-        <div style={{width:'90%', marginLeft:'5%'}}>
-          {getStepContent(activeStep)}
+        <div style={{ width: "90%", marginLeft: "5%" }}>
+          {getStepContent(activeStep, this.props.data, this.state.errorStatus)}
         </div>
       </div>
     )
@@ -159,4 +179,8 @@ HorizontalNonLinearStepper.propTypes = {
   classes: PropTypes.object
 }
 
-export default withStyles(styles)(HorizontalNonLinearStepper)
+const mapStateToProps = reduxState => ({ data: reduxState.form.edit.data })
+
+export default connect(mapStateToProps)(
+  withStyles(styles)(HorizontalNonLinearStepper)
+)
