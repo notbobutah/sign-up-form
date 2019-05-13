@@ -30,8 +30,6 @@ class AddressForm extends Component {
       disableInput
     } = this.props;
     
-    console.log({data})
-
     if (!formEdit || !formView) {
       return <span>LOADING</span>;
     }
