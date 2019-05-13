@@ -39,7 +39,7 @@ class AddressForm extends Component {
     return (
       <div align="center">
             <React.Fragment>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h3" gutterBottom>
               Contact Information
             </Typography>
             <Grid container justify="center" spacing={24}>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../../components/TextInput';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import {connect} from 'react-redux'
 import { getFormView, getFormEdit, getHasChanged } from "../../store/form/selectors";
 import { setupForm, saveForm } from '../../store/form/thunk';
 import { addChange } from '../../store/form/actions';
+import './index.css'
 
 
 class InsuranceForm extends Component {
@@ -32,68 +32,68 @@ class InsuranceForm extends Component {
     return (
       <div align="center">
             <React.Fragment>
-            <Typography variant="h3" gutterBottom>
-            Insurance
-            </Typography>
-            <Grid container justify="center" spacing={24}>
-                <Grid item xs={12} sm={8}>
+            <div id='q-and-a-wrapper'>
+                <Typography variant='h3'>Insurance</Typography>       
+                <div className='q-and-a-container'>
+                    <div className='question-container'>
+                        <Typography variant='body1'>
+                            Do you have Commercial General Liability or Garage Liability and $100K Automobile Liability?
+                        </Typography>
+                    </div>
+                    <div className='answer-container'>
                     <TextInput
-                    required
-                    id="liability"
-                    name="liability"
-                    label="Do you have Commercial General Liability"
-                    helperText="Do you have Garage Liability and $100K Automobile Liability?"
-                    fullWidth
-                    autoComplete="liability"
-                    addChange={addChange}
-                    value={data.liability}
-                    disableInput={disableInput}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                <TextInput
-                    required
-                    id="agentName"
-                    name="agentName"
-                    label="What is your Insurance Agent's Name?"
-                    fullWidth
-                    autoComplete="agentname"
-                    addChange={addChange}
-                    value={data.agentName}
-                    disableInput={disableInput}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                <TextInput
-                    required
-                    id="agentEmail"
-                    name="agentEmail"
-                    label="What is your Insurance Agent's Email?"
-                    fullWidth
-                    autoComplete="agentemail"
-                    addChange={addChange}
-                    value={data.agentEmail}
-                    disableInput={disableInput}
-                />
-                </Grid>
-                <Grid item xs={12}  sm={8}>
-                <TextInput
-                    required
-                    id="software"
-                    name="software"
-                    label="Do you use a towing management software?"
-                    fullWidth
-                    autoComplete="software"
-                    addChange={addChange}
-                    value={data.software}
-                    disableInput={disableInput}
-                    />
-                    
-                </Grid>
-                
-            </Grid>
-        <Grid  item xs={12} sm={8}>
-        </Grid>
+                            required
+                            id="liability"
+                            name="liability"
+                            fullWidth
+                            autoComplete="liability"
+                            addChange={addChange}
+                            value={data.liability}
+                            disableInput={disableInput}
+                        />
+                    </div>
+                </div> 
+                {/* Next Question     */}
+                <div className='q-and-a-container'>
+                    <div className='question-container'>
+                        <Typography variant='body1'>
+                        What is your Insurance Agent's Name?
+                        </Typography>
+                    </div>
+                    <div className='answer-container'>
+                        <TextInput
+                            required
+                            id="agentName"
+                            name="agentName"
+                            fullWidth
+                            autoComplete="agentname"
+                            addChange={addChange}
+                            value={data.agentName}
+                            disableInput={disableInput}
+                        />
+                    </div>
+                </div>     
+                {/* Next Question     */}
+                <div className='q-and-a-container'>
+                    <div className='question-container'>
+                        <Typography variant='body1'>
+                        Do you currently use a towing management software?
+                        </Typography>
+                    </div>
+                    <div className='answer-container'>
+                        <TextInput
+                            required
+                            id="software"
+                            name="software"
+                            fullWidth
+                            autoComplete="software"
+                            addChange={addChange}
+                            value={data.software}
+                            disableInput={disableInput}
+                        />
+                    </div>
+                </div>     
+            </div>
       </React.Fragment>
     </div>
     )

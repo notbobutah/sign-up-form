@@ -30,45 +30,54 @@ class SignupCoverageAreaForm extends Component {
       return <span>LOADING</span>;
     }
     return (
-      <div >
+      <div align='center'>
             <React.Fragment>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h3" gutterBottom>
             Coverage Area
             </Typography>
             <Grid container justify="center" spacing={24}>
+                <Grid item xs={12} sm={12}>
+                  <Typography variant="h6" gutterBottom>
+                    Are you willing to leave your coverage area?
+                  </Typography>
+                </Grid>
                 <Grid item xs={12} sm={8}>
                     <TextInput
                     required
                     id="leaveCoverageArea"
                     name="leaveCoverageArea"
-                    label="Are you willing to leave your coverage area?"
-                    fullWidth
                     autoComplete="leaveCoverageArea"
                     addChange={addChange}
                     value={data.leaveCoverageArea}
                     disableInput={disableInput}
                     />
                 </Grid>
+                <Grid item xs={12} sm={12}>
+                  <Typography variant="h6" gutterBottom>
+                    How many miles are you willing to travel from your home location?
+                  </Typography>
+                </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
                     id="travel"
                     name="travel"
-                    label="How many miles are you willing to travel from your home location?"
-                    fullWidth
                     autoComplete="travel"
                     addChange={addChange}
                     value={data.travel}
                     disableInput={disableInput}
                     />
                 </Grid>
+                <Grid item xs={12} sm={12}>
+                  <Typography variant="h6" gutterBottom>
+                    What are your service hours?
+                  </Typography>
+                </Grid>
                 <Grid item xs={12} sm={8}>
                 <TextInput
                     required
                     id="hours"
                     name="hours"
-                    label="What are your service hours?"
-                    fullWidth
                     autoComplete="hours"
                     addChange={addChange}
                     value={data.hours}
