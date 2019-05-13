@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import TextInput from "../../components/TextInput"
-// import SaveBar from '../../components/SaveBar';
-import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { connect } from "react-redux"
 import {
