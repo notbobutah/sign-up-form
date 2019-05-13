@@ -1,6 +1,7 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
+// import { spacing } from '@material-ui/system';
 
 const TextInput = ({handleChange, label, value, id, addChange, autoComplete, disableInput}) => (
                 <TextField
@@ -13,6 +14,7 @@ const TextInput = ({handleChange, label, value, id, addChange, autoComplete, dis
                     onChange={(event) => handleChange(id, event, addChange)}
                     value={value}
                     disabled={disableInput}
+                    // helperText={helperText}
                 />
 );
 
