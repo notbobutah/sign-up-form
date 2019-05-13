@@ -20,7 +20,6 @@ const initialState = {
       liability: "",
       agentName: "",
       agentEmail: "",
-      software: "",
       //Specializations Form
       autoBodyDealer: false,
       salvage: false,
@@ -46,7 +45,15 @@ const initialState = {
       tractor: "",
       landollTrailer: "",
       lowboyTrailer: "",
-      otherEquipment: ""
+      otherEquipment: "",
+      //Coverage Area
+      leaveCoverageArea: "",
+      travel: "",
+      hours: "",
+      //Software
+      currentSoftware: "",
+      learnSoftware: "",
+      subscribe: ""
     }
   },
   edit: {
