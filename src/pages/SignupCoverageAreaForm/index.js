@@ -11,26 +11,27 @@ class SignupCoverageAreaForm extends Component {
   componentWillMount() {
     const { formEdit, formView } = this.props
     if (!formEdit || !formView) {
-      this.props.setUpEditableForm(); 
+      this.props.setUpEditableForm()
     }
   }
-  
+
   render() {
     const {
       addChange,
       formView,
       formEdit,
       data,
-      disableInput
-    } = this.props;
-    
+      disableInput,
+      errorStatus
+    } = this.props
+
     if (!formEdit || !formView) {
-      return <span>LOADING</span>;
+      return <span>LOADING</span>
     }
     return (
-      <div align='center'>
-            <React.Fragment>
-            <Typography variant="h3" gutterBottom>
+      <div align="center">
+        <React.Fragment>
+          <Typography variant="h3" gutterBottom>
             Coverage Area
             </Typography>
             <div className='q-and-a-container'>
@@ -101,11 +102,14 @@ const mapStateToProps = state => ({
   formEdit: getFormEdit(state),
   hasChanged: getHasChanged(state),
   data: state.form.edit.data
-});
+})
 
 const mapDispatchToProps = dispatch => ({
   addChange: (fieldName, fieldValue) => dispatch(addChange(fieldName, fieldValue)),
   setUpEditableForm: () => dispatch(setupForm()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupCoverageAreaForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignupCoverageAreaForm)

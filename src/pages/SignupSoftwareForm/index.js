@@ -10,10 +10,9 @@ class SignupSoftwareForm extends Component {
   componentWillMount() {
     const { formEdit, formView } = this.props
     if (!formEdit || !formView) {
-      this.props.setUpEditableForm(); 
+      this.props.setUpEditableForm()
     }
-  }
-    
+  }  
     render() {
       const {
         addChange,
@@ -94,10 +93,9 @@ class SignupSoftwareForm extends Component {
                   </div>
         </React.Fragment>
       </div>
-      )
-    }
+    )
   }
- 
+}
   const mapStateToProps = state => ({
     formView: getFormView(state),
     formEdit: getFormEdit(state),
