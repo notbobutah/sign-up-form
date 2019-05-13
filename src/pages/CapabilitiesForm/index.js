@@ -39,19 +39,26 @@ class CapabilitiesForm extends Component {
     return (
       <div align="center">
         <React.Fragment>
-          <Typography variant="h5" gutterBottom>
+          <Typography variant="h3" gutterBottom>
             Capabilities
           </Typography>
-          <Grid container justify="center" spacing={24}>
-            <Grid item xs={12} sm={12}>
-              <Typography variant="h6">Impound/Storage Lot</Typography>
-            </Grid>
-            <Grid item xs={12} sm={4}>
+          <Typography
+            variant="h6"
+            style={{ marginTop: "20px", marginBottom: "10px" }}
+          >
+            Impound/Storage Lot
+          </Typography>
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">
+                What is the size of your lot?
+              </Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
-                required
                 id="impoundSize"
                 name="impoundSize"
-                label="What is the size of your lot?"
+                label=""
                 fullWidth
                 autoComplete="impoundSize"
                 addChange={addChange}
@@ -61,13 +68,21 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.impoundSize === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">
+                How many lots do you have?
+              </Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="impoundCount"
                 name="impoundCount"
-                label="How many lots do you have?"
+                label=""
                 fullWidth
                 autoComplete="impoundCount"
                 addChange={addChange}
@@ -77,18 +92,27 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.impoundCount === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <Typography variant="h6">
-                Enter a number of Trucks & Equipment
+            </div>
+          </div>
+          {/* Next Section */}
+          <Typography
+            variant="h6"
+            style={{ marginTop: "20px", marginBottom: "10px" }}
+          >
+            Enter a number of Trucks & Equipment
+          </Typography>
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">
+                Light Duty Wheel Lift or Wrecker
               </Typography>
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="lightDutyOrWrecker"
                 name="lightDutyOrWrecker"
-                label="Light Duty Wheel Lift or Wrecker"
+                label=""
                 fullWidth
                 autoComplete="lightDutyOrWrecker"
                 addChange={addChange}
@@ -98,13 +122,21 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.lightDutyOrWrecker === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">
+                Flatbed Tow Truck - 1 Car Capacity
+              </Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="flatBedTow1Car"
                 name="flatBedTow1Car"
-                label="Flatbed Tow Truck - 1 Car Capacity"
+                label=""
                 fullWidth
                 autoComplete="flatBedTow1Car"
                 addChange={addChange}
@@ -114,13 +146,21 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.flatBedTow1Car === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">
+                Flatbed Tow Truck - 2 Car Capacity
+              </Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="flatBedTow2Car"
                 name="flatBedTow2Car"
-                label="Flatbed Tow Truck - 2 Car Capacity"
+                label=""
                 fullWidth
                 autoComplete="flatBedTow2Car"
                 addChange={addChange}
@@ -130,13 +170,21 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.flatBedTow2Car === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">
+                Flatbed Tow Truck - 3 Car Capacity
+              </Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="flatBedTow3Car"
                 name="flatBedTow3Car"
-                label="Flatbed Tow Truck - 3 Car Capacity"
+                label=""
                 fullWidth
                 autoComplete="flatBedTow3Car"
                 addChange={addChange}
@@ -146,13 +194,19 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.flatBedTow3Car === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">Four Car Hauler</Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="fourCarHauler"
                 name="fourCarHauler"
-                label="Four Car Hauler"
+                label=""
                 fullWidth
                 autoComplete="fourCarHauler"
                 addChange={addChange}
@@ -162,13 +216,19 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.fourCarHauler === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">Service Vehicles</Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="serviceVehicle"
                 name="serviceVehicle"
-                label="Service Vehicle"
+                label=""
                 fullWidth
                 autoComplete="serviceVehicle"
                 addChange={addChange}
@@ -178,13 +238,19 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.serviceVehicle === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">Heavy Duty Wrecker</Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="heavyDutyWrecker"
                 name="heavyDutyWrecker"
-                label="Heavy Duty Wrecker"
+                label=""
                 fullWidth
                 autoComplete="heavyDutyWrecker"
                 addChange={addChange}
@@ -194,13 +260,19 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.heavyDutyWrecker === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">Rotator</Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="rotator"
                 name="rotator"
-                label="rotator"
+                label=""
                 fullWidth
                 autoComplete="rotator"
                 addChange={addChange}
@@ -208,13 +280,19 @@ class CapabilitiesForm extends Component {
                 disableInput={disableInput}
                 errorStatus={errorStatus && data.rotator === "" ? true : false}
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">Tractor</Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="tractor"
                 name="tractor"
-                label="tractor"
+                label=""
                 fullWidth
                 autoComplete="tractor"
                 addChange={addChange}
@@ -222,14 +300,19 @@ class CapabilitiesForm extends Component {
                 disableInput={disableInput}
                 errorStatus={errorStatus && data.tractor === "" ? true : false}
               />
-            </Grid>
-
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">Landoll Trailer</Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="landollTrailer"
                 name="landollTrailer"
-                label="Landoll Trailer"
+                label=""
                 fullWidth
                 autoComplete="landollTrailer"
                 addChange={addChange}
@@ -239,13 +322,19 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.landollTrailer === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">Lowboy Trailer</Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="lowboyTrailer"
                 name="lowboyTrailer"
-                label="Lowboy Trailer"
+                label=""
                 fullWidth
                 autoComplete="lowboyTrailer"
                 addChange={addChange}
@@ -255,13 +344,19 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.lowboyTrailer === "" ? true : false
                 }
               />
-            </Grid>
-            <Grid item xs={12} sm={4}>
+            </div>
+          </div>
+          {/* Next Question */}
+          <div className="q-and-a-container">
+            <div className="question-container">
+              <Typography variant="body1">Other Equipment</Typography>
+            </div>
+            <div className="answer-container">
               <TextInput
                 required
                 id="otherEquipment"
                 name="otherEquipment"
-                label="Other Equipment"
+                label=""
                 fullWidth
                 autoComplete="otherEquipment"
                 addChange={addChange}
@@ -271,8 +366,8 @@ class CapabilitiesForm extends Component {
                   errorStatus && data.otherEquipment === "" ? true : false
                 }
               />
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         </React.Fragment>
       </div>
     )

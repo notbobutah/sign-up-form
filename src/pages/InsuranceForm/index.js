@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import TextInput from "../../components/TextInput"
-import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { connect } from "react-redux"
 import {
@@ -11,6 +10,7 @@ import {
 } from "../../store/form/selectors"
 import { setupForm, saveForm } from "../../store/form/thunk"
 import { addChange } from "../../store/form/actions"
+import "./index.css"
 
 class InsuranceForm extends Component {
   componentWillMount() {
@@ -36,84 +36,78 @@ class InsuranceForm extends Component {
     return (
       <div align="center">
         <React.Fragment>
-          <Typography variant="h3" gutterBottom>
-            Insurance
-          </Typography>
-          <Grid container justify="center" spacing={24}>
-            <Grid item xs={12} sm={12}>
-              <Typography variant="h6" gutterBottom>
-                Do you have Commercial General Liability or Garage Liability and
-                $100K Automobile Liability?
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={8}>
-              <TextInput
-                required
-                id="liability"
-                name="liability"
-                fullWidth
-                autoComplete="liability"
-                addChange={addChange}
-                value={data.liability}
-                disableInput={disableInput}
-                errorStatus={
-                  errorStatus && data.liability === "" ? true : false
-                }
-              />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <Typography variant="h6" gutterBottom>
-                What is your Insurance Agent's Name?
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={8}>
-              <TextInput
-                required
-                id="agentName"
-                name="agentName"
-                label=""
-                fullWidth
-                autoComplete="agentname"
-                addChange={addChange}
-                value={data.agentName}
-                disableInput={disableInput}
-                errorStatus={
-                  errorStatus && data.agentName === "" ? true : false
-                }
-              />
-            </Grid>
-            <Grid item xs={12} sm={8}>
-              <TextInput
-                required
-                id="agentEmail"
-                name="agentEmail"
-                label="What is your Insurance Agent's Email?"
-                fullWidth
-                autoComplete="agentemail"
-                addChange={addChange}
-                value={data.agentEmail}
-                disableInput={disableInput}
-                errorStatus={
-                  errorStatus && data.agentEmail === "" ? true : false
-                }
-              />
-            </Grid>
-            <Grid item xs={12} sm={8}>
-              <TextInput
-                required
-                id="software"
-                name="software"
-                label="Do you currently use a towing management software?"
-                fullWidth
-                autoComplete="software"
-                addChange={addChange}
-                value={data.software}
-                disableInput={disableInput}
-                errorStatus={errorStatus && data.software === "" ? true : false}
-              />
-            </Grid>
-          </Grid>
-          <Grid item xs={12} sm={8} />
+          <div id="q-and-a-wrapper">
+            <Typography variant="h3">Insurance</Typography>
+            <div className="q-and-a-container">
+              <div className="question-container">
+                <Typography variant="body1">
+                  Do you have Commercial General Liability or Garage Liability
+                  and $100K Automobile Liability?
+                </Typography>
+              </div>
+              <div className="answer-container">
+                <TextInput
+                  required
+                  id="liability"
+                  name="liability"
+                  fullWidth
+                  autoComplete="liability"
+                  addChange={addChange}
+                  value={data.liability}
+                  disableInput={disableInput}
+                  errorStatus={
+                    errorStatus && data.liability === "" ? true : false
+                  }
+                />
+              </div>
+            </div>
+            {/* Next Question     */}
+            <div className="q-and-a-container">
+              <div className="question-container">
+                <Typography variant="body1">
+                  What is your Insurance Agent's Name?
+                </Typography>
+              </div>
+              <div className="answer-container">
+                <TextInput
+                  required
+                  id="agentName"
+                  name="agentName"
+                  fullWidth
+                  autoComplete="agentname"
+                  addChange={addChange}
+                  value={data.agentName}
+                  disableInput={disableInput}
+                  errorStatus={
+                    errorStatus && data.agentName === "" ? true : false
+                  }
+                />
+              </div>
+            </div>
+            {/* Next Question     */}
+            <div className="q-and-a-container">
+              <div className="question-container">
+                <Typography variant="body1">
+                  Do you currently use a towing management software?
+                </Typography>
+              </div>
+              <div className="answer-container">
+                <TextInput
+                  required
+                  id="software"
+                  name="software"
+                  fullWidth
+                  autoComplete="software"
+                  addChange={addChange}
+                  value={data.software}
+                  disableInput={disableInput}
+                  errorStatus={
+                    errorStatus && data.software === "" ? true : false
+                  }
+                />
+              </div>
+            </div>
+          </div>
         </React.Fragment>
       </div>
     )

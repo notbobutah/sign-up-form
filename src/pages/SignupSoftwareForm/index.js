@@ -9,9 +9,12 @@ import { setupForm, saveForm } from '../../store/form/thunk';
 import { addChange } from '../../store/form/actions';
 
 class SignupSoftwareForm extends Component {
-    componentWillMount() {
-      this.props.setUpEditableForm();
+  componentWillMount() {
+    const { formEdit, formView } = this.props
+    if (!formEdit || !formView) {
+      this.props.setUpEditableForm(); 
     }
+  }
     
     render() {
       const {
@@ -28,11 +31,11 @@ class SignupSoftwareForm extends Component {
       return (
         <div align="center">
               <React.Fragment>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h3" gutterBottom>
               Software
               </Typography>
               <Grid container justify="center">
-                  <Grid item xs={12} sm={12}>
+                  <Grid item xs={12} sm={8}>
                       <TextInput
                       required
                       id="currentSoftware"
@@ -45,12 +48,13 @@ class SignupSoftwareForm extends Component {
                       disableInput={disableInput}
                       />
                   </Grid>
-                  <Grid item xs={12} sm={8}>
+                  <Grid item xs={8} sm={8}>
                   <TextInput
-                      required
+                      required 
                       id="learnSoftware"
                       name="learnSoftware"
-                      label="Would you be interested in learning more about Omadi's towing management software?"
+                      label="Learn more"
+                      helperText="Would you be interested in learning more about Omadi's towing management software?"
                       fullWidth
                       autoComplete="learnSoftware"
                       addChange={addChange}

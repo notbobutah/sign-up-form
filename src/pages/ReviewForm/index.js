@@ -4,16 +4,13 @@ import InsuranceForm from "../InsuranceForm"
 import AddressForm from "../AddressForm"
 import Button from "@material-ui/core/Button"
 import axios from "axios"
-// import ContactInformationForm from "../ContactInformationForm"
 import CapabilitiesForm from "../CapabilitiesForm"
 import SignupCoverageAreaForm from "../SignupCoverageAreaForm"
 import SignupSoftwareForm from "../SignupSoftwareForm"
+import SpecializationsForm from "../SpecializationsForm"
 import Typography from "@material-ui/core/Typography"
 
 class ReviewForm extends Component {
-  // componentWillMount() {
-  //   this.props.setNewEditableForm();
-  // }
   handleSubmit = () => {
     try {
       const { data } = this.props
@@ -37,11 +34,10 @@ class ReviewForm extends Component {
         }}
       >
         <Typography variant="h4">Review your Application Data</Typography>
-        {/* <ContactInformationForm disableInput={true}/> */}
         <AddressForm disableInput={true} />
         <InsuranceForm disableInput={true} />
         <CapabilitiesForm disableInput={true} />
-        <div>Spec form</div>
+        <SpecializationsForm disableInput={true} />
         <SignupCoverageAreaForm disableInput={true} />
         <SignupSoftwareForm disableInput={true} />
 
@@ -53,11 +49,11 @@ class ReviewForm extends Component {
   }
 }
 
-ReviewForm.defaultProps = {
-  formView: null,
-  formEdit: null,
-  hasChanged: true
-}
+// ReviewForm.defaultProps = {
+//   formView: null,
+//   formEdit: null,
+//   hasChanged: true,
+// };
 const mapStateToProps = state => ({
   data: state.form.edit.data
 })
