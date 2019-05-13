@@ -2,14 +2,14 @@ import React  from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
-const TextInput = ({handleChange, label, value, id, addChange, disableInput}) => (
+const TextInput = ({handleChange, label, value, id, addChange, autoComplete, disableInput}) => (
                 <TextField
                     required
                     id={id}
                     name={id}
                     label={label}
                     fullWidth
-                    autoComplete="fname"
+                    autoComplete={autoComplete}
                     onChange={(event) => handleChange(id, event, addChange)}
                     value={value}
                     disabled={disableInput}
