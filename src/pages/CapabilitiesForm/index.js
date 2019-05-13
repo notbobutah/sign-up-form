@@ -1,15 +1,12 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
-import TextInput from "../../components/TextInput"
-import Typography from "@material-ui/core/Typography"
-import { connect } from "react-redux"
-import {
-  getFormView,
-  getFormEdit,
-  getHasChanged
-} from "../../store/form/selectors"
-import { setupForm, saveForm } from "../../store/form/thunk"
-import { addChange } from "../../store/form/actions"
+import React, { Component } from 'react';
+import TextInput from '../../components/TextInput';
+import Typography from '@material-ui/core/Typography';
+import {connect} from 'react-redux'
+import { getFormView, getFormEdit, getHasChanged } from "../../store/form/selectors";
+import { setupForm } from '../../store/form/thunk';
+import { addChange } from '../../store/form/actions';
+
+
 
 class CapabilitiesForm extends Component {
   componentWillMount() {
@@ -25,8 +22,6 @@ class CapabilitiesForm extends Component {
       // discardChanges,
       formView,
       formEdit,
-      // hasChanged,
-      // saveChanges,
       data,
       disableInput,
       errorStatus
@@ -372,29 +367,6 @@ class CapabilitiesForm extends Component {
   }
 }
 
-CapabilitiesForm.propTypes = {
-  addChange: PropTypes.func.isRequired,
-  discardChanges: PropTypes.func.isRequired,
-  formView: PropTypes.shape({
-    label: PropTypes.string,
-    id: PropTypes.string,
-    field: PropTypes.string
-  }),
-  formEdit: PropTypes.shape({
-    label: PropTypes.string,
-    id: PropTypes.string,
-    field: PropTypes.string
-  }),
-  hasChanged: PropTypes.bool,
-  saveChanges: PropTypes.func.isRequired,
-  setUpEditableForm: PropTypes.func.isRequired
-}
-
-CapabilitiesForm.defaultProps = {
-  formView: null,
-  formEdit: null,
-  hasChanged: true
-}
 
 const mapStateToProps = state => ({
   formView: getFormView(state),
@@ -404,12 +376,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addChange: (fieldName, fieldValue) =>
-    dispatch(addChange(fieldName, fieldValue)),
-  discardChanges: () => dispatch(setupForm()),
-  saveChanges: () => dispatch(saveForm()),
+  addChange: (fieldName, fieldValue) => dispatch(addChange(fieldName, fieldValue)),
   setUpEditableForm: () => dispatch(setupForm())
-})
+});
 
 export default connect(
   mapStateToProps,
