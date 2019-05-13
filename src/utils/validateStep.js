@@ -33,12 +33,11 @@ export default function validateStep(step, data) {
       }
       return false
     case 1:
-      const { liability, agentName, agentEmail, software } = data
+      const { liability, agentName, agentEmail } = data
       const insuranceForm = {
         liability,
         agentName,
-        agentEmail,
-        software
+        agentEmail
       }
       for (let val in insuranceForm) {
         if (insuranceForm[val] === "") {
@@ -82,6 +81,36 @@ export default function validateStep(step, data) {
       }
       for (let val in capabilitiesForm) {
         if (capabilitiesForm[val] === "") {
+          alert(`Please type all fields to continue`)
+          return true
+        }
+      }
+      return false
+    case 4:
+      const { leaveCoverageArea, travel, hours } = data
+
+      const coverageForm = {
+        leaveCoverageArea,
+        travel,
+        hours
+      }
+      for (let val in coverageForm) {
+        if (coverageForm[val] === "") {
+          alert(`Please type all fields to continue`)
+          return true
+        }
+      }
+      return false
+    case 5:
+      const { currentSoftware, learnSoftware, subscribe } = data
+
+      const softwareForm = {
+        currentSoftware,
+        learnSoftware,
+        subscribe
+      }
+      for (let val in softwareForm) {
+        if (softwareForm[val] === "") {
           alert(`Please type all fields to continue`)
           return true
         }

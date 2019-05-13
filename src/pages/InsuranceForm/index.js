@@ -94,15 +94,15 @@ class InsuranceForm extends Component {
               <div className="answer-container">
                 <TextInput
                   required
-                  id="software"
-                  name="software"
+                  id="agentEmail"
+                  name="agentEmail"
                   fullWidth
-                  autoComplete="software"
+                  autoComplete="agentemail"
                   addChange={addChange}
-                  value={data.software}
+                  value={data.agentEmail}
                   disableInput={disableInput}
                   errorStatus={
-                    errorStatus && data.software === "" ? true : false
+                    errorStatus && data.agentEmail === "" ? true : false
                   }
                 />
               </div>
