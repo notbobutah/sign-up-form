@@ -12,22 +12,17 @@ import CapabilitiesForm from "../../pages/CapabilitiesForm"
 import SignupCoverageAreaForm from "../../pages/SignupCoverageAreaForm"
 import SignupSoftwareForm from "../../pages/SignupSoftwareForm"
 import SpecializationsForm from "../../pages/SpecializationsForm"
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import Fab from '@material-ui/core/Fab'
+import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
+import NextIcon from '@material-ui/icons/SkipNext';
+import PrevIcon from '@material-ui/icons/SkipPrevious';
 import validateStep from "../../utils/validateStep"
-const styles = theme => ({
-  root: {
-    width: "100%"
-  },
-  button: {
-    marginRight: theme.spacing.unit
-  },
-  completed: {
-    display: "inline-block"
-  },
-  instructions: {
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit
-  }
-})
+import axios from "axios/index";
+
+const ON_AUTH_TOKEN = "nUfPFSTtoxH-mdu-FGtXvPy7hZK_GVHAl-rDyYI49z8";
 
 function getSteps() {
   return [
@@ -36,8 +31,8 @@ function getSteps() {
     "Capabilities",
     "Specializations",
     "Coverage Area",
-    "Software",
-    "Review"
+    "Software"
+      // ,    "Review"
   ]
 }
 
@@ -83,28 +78,6 @@ class HorizontalNonLinearStepper extends React.Component {
 
   totalSteps = () => getSteps().length
 
-  // handleNext = () => {
-  //   let activeStep
-
-  //   if (this.isLastStep() && !this.allStepsCompleted()) {
-  //     // It's the last step, but not all steps have been completed,
-  //     // find the first step that has been completed
-  //     const steps = getSteps()
-  //     activeStep = steps.findIndex((step, i) => !(i in this.state.completed))
-  //   } else {
-  //     activeStep = this.state.activeStep + 1
-  //   }
-  //   // this.setState({
-  //   //   activeStep
-  //   // })
-  // }
-
-  // handleBack = () => {
-  //   this.setState(state => ({
-  //     activeStep: state.activeStep - 1
-  //   }))
-  // }
-
   handleStep = step => () => {
     // This verifies that all fields are entered before jumping to the next or prev step
     const errorStatus = validateStep(this.state.activeStep, this.props.data)
@@ -133,6 +106,27 @@ class HorizontalNonLinearStepper extends React.Component {
       completed: {}
     })
   }
+  handleSubmit () {
+
+      try {
+
+        console.dir(this.state.completed)
+          console.log(JSON.stringify(this.state.completed));
+        if(!this.state.completed) {
+            return;
+        }
+          const {data} = this.props
+          console.info("hit", data)
+          axios.defaults.headers.common['X-CSRF-Token'] = ON_AUTH_TOKEN;
+          // axios.post("http://omadi-crm.test/api/network/account_new", { data })
+          axios.post("https://testnetwork.omadi.com/api/network/account_new", {data})
+              .then(res => {
+                  console.log(`endpoint response`, res)
+              })
+      } catch (err) {
+          console.log(`There was an error submitting the form: ${err}`)
+      }
+  }
 
   completedSteps() {
     return Object.keys(this.state.completed).length
@@ -150,6 +144,7 @@ class HorizontalNonLinearStepper extends React.Component {
     const { classes } = this.props
     const steps = getSteps()
     const { activeStep } = this.state
+    // const done = this.state.activeStep.completed
 
     return (
       <div className={classes.root}>
@@ -168,6 +163,36 @@ class HorizontalNonLinearStepper extends React.Component {
         <div style={{ width: "90%", marginLeft: "5%" }}>
           {getStepContent(activeStep, this.props.data, this.state.errorStatus)}
         </div>
+        <div>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center"
+                }}
+            >
+                <AppBar position="fixed" color="primary" className={classes.appBar}>
+                    <Toolbar className={classes.toolbar}>
+                        <IconButton color="inherit"
+                                    onClick={this.handleStep(activeStep-1)}
+                                    completed={this.state.completed[activeStep-1]}>
+                            <PrevIcon/>
+                        </IconButton>
+                        <Fab color="secondary"
+                             aria-label="Add"
+                             className={classes.fabButton}
+                            onClick={() => { this.handleSubmit(); }}
+                        >
+                            <DoneOutlineIcon />
+                        </Fab>
+                        <IconButton color="inherit"
+                                    onClick={this.handleStep(activeStep+1)}
+                                    completed={this.state.completed[activeStep+1]}>
+                            <NextIcon/>
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+            </div>        </div>
       </div>
     )
   }
@@ -178,6 +203,54 @@ HorizontalNonLinearStepper.propTypes = {
 }
 
 const mapStateToProps = reduxState => ({ data: reduxState.form.edit.data })
+
+
+const styles = theme => ({
+    text: {
+        paddingTop: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing.unit * 2,
+        paddingRight: theme.spacing.unit * 2,
+    },
+    paper: {
+        paddingBottom: 50,
+    },
+    list: {
+        marginBottom: theme.spacing.unit * 2,
+    },
+    subHeader: {
+        backgroundColor: theme.palette.background.paper,
+    },
+    appBar: {
+        top: 'auto',
+        bottom: 0,
+    },
+    toolbar: {
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    fabButton: {
+        position: 'absolute',
+        zIndex: 1,
+        top: -30,
+        left: 0,
+        right: 0,
+        margin: '0 auto',
+    },
+    root: {
+        width: "100%"
+    },
+    button: {
+        marginRight: theme.spacing.unit
+    },
+    completed: {
+        display: "inline-block"
+    },
+    instructions: {
+        marginTop: theme.spacing.unit,
+        marginBottom: theme.spacing.unit
+    }
+});
+
 
 export default connect(mapStateToProps)(
   withStyles(styles)(HorizontalNonLinearStepper)
