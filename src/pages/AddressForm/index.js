@@ -142,7 +142,6 @@ class AddressForm extends Component {
                 addChange={addChange}
                 value={data.address2}
                 disableInput={disableInput}
-                errorStatus={errorStatus && data.address2 === "" ? true : false}
               />
             </Grid>
           </Grid>

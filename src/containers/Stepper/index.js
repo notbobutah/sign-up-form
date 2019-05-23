@@ -176,19 +176,20 @@ class HorizontalNonLinearStepper extends React.Component {
                         <IconButton color="inherit"
                                     onClick={this.handleStep(activeStep-1)}
                                     completed={this.state.completed[activeStep-1]}>
-                            <PrevIcon/>
+                           <PrevIcon/> Back
                         </IconButton>
                         <Fab color="secondary"
                              aria-label="Add"
                              className={classes.fabButton}
                             onClick={() => { this.handleSubmit(); }}
                         >
-                            <DoneOutlineIcon />
+                          <b>Save</b>
                         </Fab>
+                        
                         <IconButton color="inherit"
                                     onClick={this.handleStep(activeStep+1)}
                                     completed={this.state.completed[activeStep+1]}>
-                            <NextIcon/>
+                           Next <NextIcon/>
                         </IconButton>
                     </Toolbar>
                 </AppBar>
