@@ -42,7 +42,7 @@ class AddressForm extends Component {
             Contact Information
           </Typography>
           <Grid container justify="center" spacing={24}>
-            <Grid item xs={12} sm={8}>
+            <Grid item xs={6} sm={4}>
               <TextInput
                 required
                 id="firstName"
@@ -58,7 +58,7 @@ class AddressForm extends Component {
                 }
               />
             </Grid>
-            <Grid item xs={12} sm={8}>
+            <Grid item xs={6} sm={4}>
               <TextInput
                 required
                 id="lastName"
